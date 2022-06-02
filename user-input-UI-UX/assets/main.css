@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Basic&display=swap');
+
+:root {
+    --main-font: 'Basic', sans-serif;
+    --main-blue: #6C63FF;
+    --main-yellow: #FBB816;
+}
+body {
+    background-color: #fff;
+    color: #333;
+}
