@@ -1,20 +1,14 @@
 <template>
-
-    <navBar />
     <div class="wrapper">
         <p class="first">Help us improve your Expirience</p>
-        <img src="../../assets/undraw_reviews_lp8w.svg">
+        <img src="../assets/undraw_reviews_lp8w.svg">
         <button @click.once="next">Start</button>
         <p class="last">The comments are anonymous and the account details are encryted</p>
     </div>
-    <FootBar />
-
-
 </template>
 
 <script>
 
-import '../../assets/main.css'
 
 export default {
     methods: {
@@ -33,16 +27,21 @@ export default {
     display: grid;
     place-items: center;
     row-gap: 30px;
+    max-width: 100vw;
 }
 .wrapper img {
-    height: 200px;
+    height: 150px;
     width: auto;
 }
 .wrapper .first{
-    font-size: 1.3em;
+    font-size: 1rem;
+}
+.wrapper .last {
+    font-size: .8rem;
+    text-align: center;
 }
 .wrapper button {
- padding: 0.8em 1.7em;
+ padding: 0.4em 1em;
  background-color: transparent;
  border-radius: .3em;
  position: relative;
@@ -50,7 +49,7 @@ export default {
  cursor: pointer;
  transition: .5s;
  font-weight: 400;
- font-size: 17px;
+ font-size: .8rem;
  border: 1px solid;
  font-family: inherit;
  text-transform: uppercase;
