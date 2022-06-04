@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
     --bg-color: #080F2B;
@@ -10,7 +10,7 @@
     --main-blue: #0859F8;
     --main-orange: #EF5629;
     --main-grey: #2B3242;
-    --main-font: 'Metrophobic', sans-serif;;
+    --main-font:   'Open Sans', sans-serif;
 }
 * { 
     box-sizing: border-box; 

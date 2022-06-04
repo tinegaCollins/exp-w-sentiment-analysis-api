@@ -1,17 +1,20 @@
 <template>
   <div class="wrapper">
-    <SideBar/>
+    <SideBar></SideBar>
+    <MidBar/>
   </div>
 </template>
 
 <script>
 
 import './assets/main.css'
-import SideBar from './components/side-bar.vue';
+
 
 </script>
 
 <style>
+
+
 body {
   background-color: var(--bg-color);
   min-height: 90vh;
@@ -21,5 +24,7 @@ body {
 .wrapper {
   padding: 25px 40px;
   height: 100vh;
+  display: flex;
+  flex-direction: row;
 }
 </style>
