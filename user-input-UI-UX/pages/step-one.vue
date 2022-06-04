@@ -51,18 +51,5 @@ export default {
     row-gap: 40px;
     padding: 50px
 }
-.stepOne button {
-    padding: 8px 16px;
-    border: none;
-    border: 1px solid black;
-    border-radius: 15px;
-    width: max-content;
-    align-self: center;
-    background-color: var(--main-blue);
-    transition: background-color 500ms ease;
-}
-.stepOne button:hover {
-    cursor: pointer;
-    background-color: var(--main-yellow);
-}
+
 </style>
