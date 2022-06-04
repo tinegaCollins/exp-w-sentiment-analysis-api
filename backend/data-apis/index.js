@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import express from 'express'
-import db from './model/companies.js'
+import Companies from './model/companies.js'
+// import rewards from './model/rewards.js'
+// import employees from "./model/employees.js";
 
 
 const app = express();
@@ -10,31 +12,14 @@ app.listen(PORT, () => {
    console.log(`Server is running on PORT: ${PORT}`);
 });
 
-
-app.get('/:id',(req,res)=>{
-    console.log(db.companies.findById(req.params.id,"title").exec());
-})
-
-
-
 mongoose.connect("mongodb+srv://CEMS_admin:pass@cems.5le7maf.mongodb.net/?retryWrites=true&w=majority")
 
 
-// const camp = await companies.create({
-//     title: 'fresh pickens',
-//     reviews: 'qwerty',
-//     employees: ['12','34','67']
-// });
+const newData = new Companies({
+    title: 'tinega owned',
+    reviews: ["fuck off","ima not here"],
+    ratings: [3,4,6,2,7],
+    employees: ['ghjk','tyuiop']
+})
 
-// camp.title = "coles company";
-// camp.save();
-
-
-//to return a specific query
-// const camp = await db.companies.findById("629b115960ed3c720a770b18","title").exec();
-// to delete 
-
-// const campDelete = await companies.deleteOne({ title : 'coles company'})
-// console.log(camp);
-
-
+await newData.save()
