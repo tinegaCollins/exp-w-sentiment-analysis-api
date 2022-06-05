@@ -1,20 +1,4 @@
 <template>
-    <div class="child">
-        <!-- This page correctly has only one single root element -->
-        <MidBar/>
-        <end-bar/>
-    </div>
+    <mid-bar/>
+    <end-bar/>
 </template>
-
-<script>
-
-
-</script>
-
-<style>
-.child {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
-</style>

@@ -22,12 +22,14 @@
 .end {
     padding: 30px;
     width: 350px;
+    height: 100%;
 }
 .notes {
     width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 30px;
+    margin-top: 200px;
 }
 .notes > div {
     width: 100%;

@@ -1,20 +1,12 @@
 <template>
-<div class="wrapper">
-    <side-bar/>
-    <NuxtPage/>
-</div>
+    <div class="home">
+      <side-bar/>
+      <NuxtPage/>
+    </div>
 </template>
 
-
-<script >
-
-
-import './assets/main.css'
-
-
-</script>
 <style>
-.wrapper {
+.home {
   padding: 25px 40px;
   height: 100vh;
   display: flex;
