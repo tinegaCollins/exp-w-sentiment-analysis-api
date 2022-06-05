@@ -6,7 +6,7 @@
         </div>
         <div class="links">
             <div class="dashboard">
-                <NuxtLink to="/">
+                <NuxtLink to="/" >
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	                viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
                     <path id="dashboard_1_" d="M31,31.36H1c-0.199,0-0.36-0.161-0.36-0.36V1c0-0.199,0.161-0.36,0.36-0.36h30
@@ -272,6 +272,10 @@
         </div>
     </div>
 </template>
+
+<script setup>
+import '../assets/main.css'
+</script>
 <style>
 
 .sideBar {

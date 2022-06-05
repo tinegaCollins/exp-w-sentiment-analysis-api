@@ -1,4 +1,6 @@
 <template> 
 
-<h2>settings</h2>
+<div>
+    <h2>settings</h2>
+</div>
 </template>

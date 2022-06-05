@@ -20,11 +20,11 @@
 
                 </div>
             </div>
-            <div class="live-today">
+            <div class="live-today background-blur">
 
             </div>
-            <div class="samples">
-
+            <div class="samples background-blur">
+                
             </div>
         </main>
     </div>
@@ -75,7 +75,7 @@ main {
     flex-wrap: wrap;
     padding: 15px 0;
     justify-content: center;
-    column-gap: 20px;
+    gap: 20px;
 }
 main .preview {
     height: 250px;
@@ -87,7 +87,6 @@ main .yesterday {
     width: 50%;
     display: flex;
     flex-direction: column;
-    /* background-color: red; */
     row-gap: 20px;
 }
 main .yesterday .up {
@@ -99,5 +98,15 @@ main .yesterday .down {
     height: 40%;
     width: 100%;
     border-radius: 10px
+}
+main .live-today {
+    height: 250px;
+    width: 40%;
+    border-radius: 10px;
+}
+main .samples {
+    height: 250px;
+    width: 50%;
+    border-radius: 10px;
 }
 </style>

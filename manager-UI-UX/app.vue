@@ -1,19 +1,19 @@
 <template>
 <div class="wrapper">
     <side-bar/>
-    <nuxt-page/>
+    <NuxtPage/>
 </div>
 </template>
 
 
-<script>
+<script >
 
 
 import './assets/main.css'
+
+
 </script>
 <style>
-
-
 .wrapper {
   padding: 25px 40px;
   height: 100vh;
