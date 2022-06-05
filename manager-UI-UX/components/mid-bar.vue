@@ -9,6 +9,24 @@
                 <img src="../assets/bell-svgrepo-com.svg">
             </div>
         </div>
+        <main>
+            <div class="preview background-blur">
+            </div>
+            <div class="yesterday ">
+                <div class="up background-blur">
+
+                </div>
+                <div class="down background-blur">
+
+                </div>
+            </div>
+            <div class="live-today">
+
+            </div>
+            <div class="samples">
+
+            </div>
+        </main>
     </div>
 </template>
 
@@ -20,7 +38,7 @@
     color: var(--main-color);
 }
 .top {
-    min-width: 700px;
+    min-width: 650px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -50,5 +68,36 @@
     padding: 10px 13px;
     border-radius: 10px;
 }
-
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    justify-content: center;
+    column-gap: 20px;
+}
+main .preview {
+    height: 250px;
+    width: 40%;
+    border-radius: 10px;
+}
+main .yesterday {
+    height: 250px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    row-gap: 20px;
+}
+main .yesterday .up {
+    height:55%;
+    width: 100%;
+    border-radius: 10px;
+}
+main .yesterday .down {
+    height: 40%;
+    width: 100%;
+    border-radius: 10px
+}
 </style>

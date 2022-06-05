@@ -20,7 +20,7 @@
                 </NuxtLink>
             </div>
             <div class="employees">
-                <a href="#">
+                <NuxtLink to="/employees">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	        viewBox="0 0 459.864 459.864" style="enable-background:new 0 0 459.864 459.864;" xml:space="preserve">
             <g>
@@ -78,10 +78,10 @@
 </g>
                     </svg>
                     Employees
-                </a>
+                </NuxtLink>
             </div>
             <div class="stats"> 
-                <a href="#">
+                <NuxtLink to="/stats">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 470" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 470 470">
                     <g>
                         <path d="M462.5,425H45V7.5C45,3.358,41.643,0,37.5,0S30,3.358,30,7.5v63.333H7.5c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5,7.5,7.5H30   v55.833H7.5c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5,7.5,7.5H30V212.5H7.5c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5,7.5,7.5H30v55.833   H7.5c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5,7.5,7.5H30v55.833H7.5c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5,7.5,7.5H30V432.5   c0,4.142,3.357,7.5,7.5,7.5h110.833v22.5c0,4.142,3.357,7.5,7.5,7.5s7.5-3.358,7.5-7.5V440h173.334v22.5c0,4.142,3.357,7.5,7.5,7.5   s7.5-3.358,7.5-7.5V440H462.5c4.143,0,7.5-3.358,7.5-7.5S466.643,425,462.5,425z"/>
@@ -90,10 +90,10 @@
                     </g>
                     </svg>
                     Statistics
-                </a>
+                </NuxtLink>
             </div>
             <div class="samples">
-                <a href="#">
+                <NuxtLink to="/samples">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	            viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
                 <g>
@@ -197,11 +197,11 @@
 </g>
                     </svg>
                     Samples
-                </a>
+                </NuxtLink>
             </div>
             <div class="settings">
                 
-                <a href="#">
+                <NuxtLink to="/settings">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 478.703 478.703" style="enable-background:new 0 0 478.703 478.703;" xml:space="preserve">
 <g>
@@ -263,7 +263,7 @@
 </g>
                     </svg>
                     Settings
-                </a>
+                </NuxtLink>
             </div>
         </div>
         <div class="out">
@@ -319,9 +319,12 @@
     padding: 0 10px;
     height: 30px;
 }
-.links a:active {
+a.router-link-exact-active{
     color: #ffffff;
     border-left: 2px solid #ffffff;
+}
+a.router-link-exact-active > svg {
+	fill: #ffffff;
 }
 .links svg {
     height: 18px;
