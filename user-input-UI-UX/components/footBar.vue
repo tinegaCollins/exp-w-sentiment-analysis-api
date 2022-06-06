@@ -1,6 +1,6 @@
 <template>
  <footer>
-    <p>powered by Expirience Thumb</p>
+    <p>powered by thumbs up .</p>
     <p>built by <a href="https://tinega-collins.netlify.app/">tinega collins</a></p>
 </footer>
 </template>
@@ -8,9 +8,7 @@
 <style>
 
 footer {
-    position: absolute;
-    bottom: 10px;
-    font-size: .8rem;
+    font-size: .65rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

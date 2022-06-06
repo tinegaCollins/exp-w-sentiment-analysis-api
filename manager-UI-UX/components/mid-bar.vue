@@ -12,7 +12,7 @@
         <main>
             <div class="preview background-blur">
                 <div class="chart">
-
+                    
                 </div>
             </div>
             <div class="yesterday ">
@@ -56,7 +56,7 @@
                         <h4>Lily you</h4>
                         <p>technology and innovation</p>
                     </div>
-                    <p>97%</p>
+                    <p>94%</p>
                 </div>
                  <div class="blur-background">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6diMiYXkRejEp9n0LBF4uf44iXMl1Nqg_sQ&usqp=CAU" >
@@ -64,7 +64,7 @@
                         <h4>Lebron james</h4>
                         <p>sports and activities</p>
                     </div>
-                    <p>97%</p>
+                    <p>91%</p>
                 </div>
             </div>
         </main>

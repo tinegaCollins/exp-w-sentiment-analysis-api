@@ -1,4 +1,5 @@
 <template>
+  <div class="all">
     <navBar/>
     <div class="steps" v-if="display.one">
         <div class="one"></div>
@@ -8,6 +9,7 @@
     </div>
     <NuxtPage></NuxtPage>
     <footBar/>
+  </div>
 </template>
 
 
@@ -36,6 +38,10 @@ import './assets/main.css'
 </script>
 
 <style>
+.all {
+    display: grid;
+    place-items: center;
+}
 .steps{
     display: flex;
     justify-content: center;
@@ -48,10 +54,10 @@ import './assets/main.css'
     border-radius: 50%;
 }
 button {
-    padding: 8px 16px;
+    padding: 10px 20px !important;
     border: none;
     border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 20px;
     width: max-content;
     align-self: center;
     background-color: var(--main-blue);

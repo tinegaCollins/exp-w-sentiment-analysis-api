@@ -3,44 +3,55 @@
 
 <h3>direct comments on employees</h3>
 <p>The comments are anonymous</p>
-<div class="wrapper">
+<div class="emp-wrapper">
+    <NuxtLink to="/step-four"><button>skip</button></NuxtLink>
     <div class="employees">
         <div class="single">
+            <NuxtLink to="/step-three/id45">
             <img src="../../assets/face-shot.png">
             <p><strong>Name:</strong> Grace msalame</p>
             <p><strong>department: </strong>soaps and detergents</p>
+            </NuxtLink>
         </div>
         <div class="single">
+            <NuxtLink to="/step-three/id45">
             <img src="../../assets/face-shot.png">
             <p><strong>Name:</strong> Grace msalame</p>
             <p><strong>department: </strong>soaps and detergents</p>
+            </NuxtLink>
         </div>
         <div class="single">
+            <NuxtLink to="/step-three/id45">
             <img src="../../assets/face-shot.png">
             <p><strong>Name:</strong> Grace msalame</p>
             <p><strong>department: </strong>soaps and detergents</p>
+            </NuxtLink>
         </div>
         <div class="single">
+            <NuxtLink to="/step-three/id45">
             <img src="../../assets/face-shot.png">
             <p><strong>Name:</strong> Grace msalame</p>
             <p><strong>department: </strong>soaps and detergents</p>
+            </NuxtLink>
+
         </div>
         <div class="single">
+            <NuxtLink to="/step-three/id45">
             <img src="../../assets/face-shot.png">
             <p><strong>Name:</strong> Grace msalame</p>
             <p><strong>department: </strong>soaps and detergents</p>
+            </NuxtLink>
+
         </div>
         <div class="single">
+            <NuxtLink to="/step-three/id45">
             <img src="../../assets/face-shot.png">
             <p><strong>Name:</strong> Grace msalame</p>
             <p><strong>department: </strong>soaps and detergents</p>
+            </NuxtLink>
         </div>
-        <div class="single">
-            <img src="../../assets/face-shot.png">
-            <p><strong>Name:</strong> Grace msalame</p>
-            <p><strong>department: </strong>soaps and detergents</p>
-        </div>
-</div>
+    </div>
+    <NuxtLink to="/step-four"><button>next</button></NuxtLink>
 </div>
 <NuxtPage></NuxtPage>
 
@@ -53,6 +64,10 @@ h3,p {
     text-align: center;
     font-family: var(--main-font);
 }
+.emp-wrapper {
+    display: grid;
+    place-items: center;
+}
 .employees {
     max-width: 600px;
     font-family: var(--main-font);
@@ -64,8 +79,8 @@ h3,p {
     justify-content: center;
     gap: 10px;
 }
-.single {
-   border: 1px solid black; 
+.single a{
+   border: 1px solid var(--main-orange); 
    padding: 5px;
    font-size: .8rem;
    margin: 3px;
@@ -73,6 +88,8 @@ h3,p {
    display: flex;
    flex-direction: column;
    align-items: center;
+   text-decoration: none;
+   color: #ffffff;
 }
 .single img {
     height: auto;
