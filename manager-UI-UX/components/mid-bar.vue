@@ -11,6 +11,9 @@
         </div>
         <main>
             <div class="preview background-blur">
+                <div class="chart">
+
+                </div>
             </div>
             <div class="yesterday ">
                 <div class="up background-blur">
@@ -20,13 +23,22 @@
                     <img class="blur-background" src="../assets/increase-svgrepo-com.svg" >
                     <div class="info">
                         <p>30 day </p>
-                        <p>progress</p>
+                        <p>customer satisfactory rate</p>
                     </div>
                     <p>70%</p>
                 </div>
             </div>
             <div class="live-today background-blur">
-
+                <h4>samples today</h4>
+                <div class="sample-examples">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, expedita.</p>
+                </div>
+                 <div class="sample-examples">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, expedita.</p>
+                </div>
+                 <div class="sample-examples">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, expedita.</p>
+                </div>
             </div>
             <div class="top-employees background-blur">
                 <h5>top employees</h5>
@@ -60,7 +72,24 @@
 </template>
 
 
+<script>
 
+export default {
+    mounted(){
+        let colors = ['#F1BA31','#EF5629','#DC1456'];
+        let samples = [...document.querySelectorAll(".sample-examples")]
+        for (let i = 0; i < samples.length; i++) {
+            let colorPicked = this.randomInteger(0,3);
+            samples[i].style.color = colors[colorPicked];
+        }
+    },
+    methods: {
+        randomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    }
+}
+</script>
 <style>
 .mid {
     padding: 10px;
@@ -135,15 +164,33 @@ main .yesterday .down {
 main .yesterday .down .info {
     font-size: .8rem;
     margin: 0 auto 0 10px;
+    padding: 10px 0;
+    position: relative;
+    top: 10px;
+}
+main .yesterday .down .info p:nth-child(2) {
+    position: relative;
+    bottom: 10px;
+    color: var(--main-orange);
 }
 main .yesterday .down img {
     padding: 5px;
     border-radius: 10px;
 }
+main .yesterday .down > p {
+    color: var(--main-yellow);
+}
 main .live-today {
     height: 250px;
     width: 40%;
     border-radius: 10px;
+    font-size: .8rem;
+    padding: 20px;
+}
+main .live-today .sample-examples {
+    padding: .1em 10px !important;
+    border-radius: 10px;
+    font-size: .75rem;
 }
 main .top-employees {
     height: 250px;
@@ -161,6 +208,14 @@ main .top-employees > div {
     height: 50px;
     align-items: center;
     padding: 0 10px;
+    transition: background 100ms ease-in;
+}
+main .top-employees > div:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.001);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 main .top-employees > div .details {
     font-size: .5rem;
