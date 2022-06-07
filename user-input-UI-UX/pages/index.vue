@@ -39,6 +39,7 @@ export default {
 .wrapper .last {
     font-size: .8rem;
     text-align: center;
+    height: max-content;
 }
 
 </style>

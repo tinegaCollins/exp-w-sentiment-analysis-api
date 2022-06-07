@@ -41,6 +41,7 @@ import './assets/main.css'
 .all {
     display: grid;
     place-items: center;
+    max-height: 100vh;
 }
 .steps{
     display: flex;
