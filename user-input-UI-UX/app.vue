@@ -15,7 +15,6 @@
 
 <script>
 
-
 import './assets/main.css'
  export default {
      data(){

@@ -2,42 +2,30 @@
     <div class="stepOne">
         <h4>step one</h4>
         <p>on a range of 1-10, how would you say our service was today</p>
-        <p>{{range}}</p>
-        <input type="range" name="range" id="1" min="0" max="10" v-model="range">
-        <NuxtLink to="/step-two"><button @click="handleRange">next</button></NuxtLink>
+        <p>{{ranger}}</p>
+        <input type="range" name="range" id="1" min="0" max="10" v-model="ranger">
+        <button @click="handleRange">next</button>
     </div>
 </template>
 
 
 <script>
 
+// import { mapMutations } from 'vuex'
 export default {
     data(){
         return {
-            range: null,
+            ranger: null,
         }
     },
     methods: {
         handleRange(){
-           if(this.range === null){
-               console.log('enter a range')
-           } 
-           else {
-               const promise = new Promise
-               //send range to server
-               .then(()=>{
-                   if(res.message === 'sent'){
-                       this.$router.go('/step-three')
-                   }
-                   else{
-                       //messages to display if error occurs
-                   }
-               })
-               .catch((err)=>{
-                   //display error
-               })
-           }
+            this.$store.commit('ADD_RANGE', this.ranger)
         }
+    },
+    mounted(){
+        console.log("mounted")
+        console.log(this.$store.state.description)
     }
 }
 </script>
