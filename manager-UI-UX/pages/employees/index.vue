@@ -1,5 +1,6 @@
 <template>
     <div class="about-employee-wrapper">
+        <div class="main-page">
         <div class="header">
             <h3>list of employees</h3>
         </div>
@@ -14,7 +15,7 @@
                 </NuxtLink>
             </div>
             <div class="one-employee">
-                <NuxtLink to="/new">
+                <NuxtLink to="/employees/123">
                     <img src="../../assets/face-shot.png">
                     <div class="employee-name">
                         <p> Constance Wu</p>
@@ -23,7 +24,7 @@
                 </NuxtLink>
             </div>
             <div class="one-employee">
-                <NuxtLink to="/new">
+                <NuxtLink to="/employees/124">
                     <img src="../../assets/face-shot.png">
                     <div class="employee-name">
                         <p> Constance Wu</p>
@@ -32,7 +33,7 @@
                 </NuxtLink>
             </div>
             <div class="one-employee">
-                <NuxtLink to="/new">
+                <NuxtLink to="/employees/125">
                     <img src="../../assets/face-shot.png">
                     <div class="employee-name">
                         <p> Constance Wu</p>
@@ -41,7 +42,7 @@
                 </NuxtLink>
             </div>
             <div class="one-employee">
-                <NuxtLink to="/new">
+                <NuxtLink to="/employees/126">
                     <img src="../../assets/face-shot.png">
                     <div class="employee-name">
                         <p> Constance Wu</p>
@@ -49,6 +50,7 @@
                     </div>
                 </NuxtLink>
             </div>
+        </div>
         </div>
         <div class="about-employee">
             <NuxtPage/>
@@ -63,7 +65,10 @@
 <style>
 .about-employee-wrapper {
     padding: 20px;
+    display: flex;
+    flex-direction: row;
 }
+
 .list {
     display: flex;
     flex-wrap: wrap;
