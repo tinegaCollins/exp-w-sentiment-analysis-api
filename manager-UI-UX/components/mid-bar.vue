@@ -81,7 +81,7 @@ export default {
         for (let i = 0; i < samples.length; i++) {
             let colorPicked = this.randomInteger(0,3);
             samples[i].style.color = colors[colorPicked];
-        }
+        };
     },
     methods: {
         randomInteger(min, max) {

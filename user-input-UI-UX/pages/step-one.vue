@@ -25,7 +25,7 @@ export default {
     },
     mounted(){
         console.log("mounted")
-        console.log(this.$store.state.description)
+        console.log(this.$store.state.range)
     }
 }
 </script>

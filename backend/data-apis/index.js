@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import express from 'express'
-import Companies from './model/companies.js'
-// import rewards from './model/rewards.js'
-// import employees from "./model/employees.js";
+import Companies from './models/companies.js'
+import rewards from './models/rewards.js'
+import employees from "./models/employees.js";
 
 
 
@@ -15,6 +15,7 @@ app.listen(PORT, () => {
 
 mongoose.connect("mongodb+srv://CEMS_admin:pass@cems.5le7maf.mongodb.net/?retryWrites=true&w=majority")
 
+console.log(mongoose.connection)
 
 const newData = new Companies({
     title: 'tinega owned',

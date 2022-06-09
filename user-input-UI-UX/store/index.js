@@ -15,3 +15,7 @@ export const mutations = {
         state.recomendation = rec
     }
 }
+
+export const getters = {
+    GET_RANGE(state){ return state.range}
+}
