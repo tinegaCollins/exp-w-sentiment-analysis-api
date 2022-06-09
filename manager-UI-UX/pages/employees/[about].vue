@@ -9,11 +9,24 @@
         </div>
         <div class="employee-stats">
             <div class="rating-chart background-blur">
-
             </div>
             <div class="attributes">
+                 <div class="stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
                 <p>most customers find this employee charming and very beatiful</p>
             </div>
+           
         </div>
     </div>
 </template>
@@ -22,7 +35,14 @@
 <script>
 
 export default {
-
+    mounted(){
+        console.log("mounted")
+        let rating = 6;
+        let stars = [...document.querySelectorAll(".star")];
+        for (let i = 0; i < rating - 1; i++) {
+            console.log(stars[i]);
+        }
+    }
 }
 </script>
 
@@ -39,9 +59,23 @@ export default {
 .employee-stats {
     display: flex;
     margin-top: 30px;
+    gap: 20px;
+    font-size: .8rem;
 }
 .employee-stats .rating-chart {
     height: 300px;
     width: 300px;
+}
+/* stars */
+.stars {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}
+.star{
+    /* background-color: var(--main-yellow); */
+    height: 25px;
+    width: 25px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 </style>
