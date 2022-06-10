@@ -1,7 +1,6 @@
 <template>
-
-
-<h3>direct comments on employees</h3>
+    <div class="all-in-ste-three">
+        <h3>direct comments on employees</h3>
 <p>The comments are anonymous</p>
 <div class="emp-wrapper">
     <NuxtLink to="/step-four"><button>skip</button></NuxtLink>
@@ -54,7 +53,7 @@
     <NuxtLink to="/step-four"><button>next</button></NuxtLink>
 </div>
 <NuxtPage></NuxtPage>
-
+    </div>
 </template>
 
 

@@ -1,31 +1,23 @@
 <template>
     <div class="stepOne">
         <h4>step one</h4>
-        <p>on a range of 1-10, how would you say our service was today</p>
-        <p>{{ranger}}</p>
-        <input type="range" name="range" id="1" min="0" max="10" v-model="ranger">
-        <button @click="handleRange">next</button>
+        <p>on a scale of 1-10, how would you say our service was today</p>
+        <p>{{range}}</p>
+        <input type="range" name="range" id="1" min="0" max="10" v-model="range">
+        <NuxtLink to="/step-two"><button @click="handleRange">next</button></NuxtLink>
     </div>
 </template>
 
 
 <script>
-
-// import { mapMutations } from 'vuex'
 export default {
-    data(){
-        return {
-            ranger: null,
+    setup(){
+        const range = ref();
+        const handleRange = ()=>{
+            console.log("router")
         }
-    },
-    methods: {
-        handleRange(){
-            this.$store.commit('ADD_RANGE', this.ranger)
-        }
-    },
-    mounted(){
-        console.log("mounted")
-        console.log(this.$store.state.range)
+
+        return { range , handleRange}
     }
 }
 </script>
@@ -38,7 +30,8 @@ export default {
     display: flex;
     flex-direction: column;
     row-gap: 40px;
-    padding: 50px
+    padding: 50px;
+    align-items: center;
 }
 .stepOne input {
     color: var(--main-pink);

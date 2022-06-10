@@ -17,12 +17,6 @@
                     <div class="star"></div>
                     <div class="star"></div>
                     <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
                 </div>
                 <p>most customers find this employee charming and very beatiful</p>
             </div>
@@ -37,11 +31,21 @@
 export default {
     mounted(){
         console.log("mounted")
-        let rating = 6;
+        let rating = 2.5;
         let stars = [...document.querySelectorAll(".star")];
-        for (let i = 0; i < rating - 1; i++) {
-            console.log(stars[i]);
+
+        if (rating % 1 != 0){
+            for (let i = 0; i < rating - 0.5; i++) {
+                stars[i].classList.add('stars-earned')
+            }
+            stars[rating - 0.5].classList.add('half-star')
         }
+        else{
+            for (let i = 0; i < rating; i++) {
+                stars[i].classList.add('stars-earned')
+            }
+        }
+ 
     }
 }
 </script>
@@ -73,9 +77,15 @@ export default {
     column-gap: 5px;
 }
 .star{
-    /* background-color: var(--main-yellow); */
     height: 25px;
     width: 25px;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.stars-earned {
+    background-color: var(--main-yellow);
+}
+.half-star {
+    background-color: var(--main-yellow);
+    clip-path: polygon(50% 0%, 50% 22%, 49% 31%, 50% 43%, 50% 55%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 </style>

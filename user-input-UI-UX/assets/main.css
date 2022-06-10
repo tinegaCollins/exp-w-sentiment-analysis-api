@@ -42,3 +42,36 @@ body {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
+/* ranger */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--main-yellow);
+    height: 1rem;
+}
+
+input[type="range"]::-moz-range-track {
+    background-color: var(--main-yellow);
+    height: 1rem;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -12px; 
+    background-color: var(--main-pink);
+    height: 2rem;
+    width: 1rem;
+
+ }
+ input[type="range"]::-moz-range-thumb {
+    border: none;
+    border-radius: 0;
+    background-color: var(--main-pink);
+    height: 2rem;
+    width: 1rem;
+}
