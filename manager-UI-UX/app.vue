@@ -11,5 +11,6 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
+  width: 100vw;
 }
 </style>
