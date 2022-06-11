@@ -1,49 +1,11 @@
 import mongoose from "mongoose";
-import Review from "./model/reviews2.js";
+import Review from "./models/reviews.js";
+import employee from "./models/employees.js"
+import company from "./models/companies.js"
 
+
+const app = E
 await mongoose.connect("mongodb+srv://CEMS_admin:pass@cems.5le7maf.mongodb.net/?retryWrites=true&w=majority")
-// creating a new object
-// const anotherReview = await Review.create({
-//     user: 'tinega collins',
-//     company: 'asus rog 5',
-//     generalReviews: [
-//         {
-//             rating: 3, 
-//             text: "poor quality of service",
-//         }
-//     ],
-//     individualReviews: [
-//         {
-//             rating: 5,
-//             employeeID: "new emp",
-//             text: "this guy is a good guy",
-//         }
-//     ],
-//     recommendation: "shut the whole thing down"
-// });
-// const newReview = await Review.create({
-//     user: "user1",
-//     company: "rircbkk",
-//     text: "lorem suck a dick",
-//     rating: 8,
-//     individualReviews: true,
-//     individual: "new employee",
-//     individualRating: 5,
-//     individualText: "this guy sucks",
-//     recommendation: "i only say that cause you are not around"
-// });
-// // newReview.user = "this shit sucks";
-// // await newReview.save();-- edit document fields
-// // returns the document added
-// const last = await Review.findById
-// ("62a447a7d0feacfbefdc7df3","user individual recommendation").exec();
-
-// // console.log(last); 
-
-// const del = await Review.deleteMany({user: "user1"});
-
-// // console.log(del);
-
 const newReview = await Review.create({
     user: "lincoln kiptoo",
     company: "no shitty bussiness",
@@ -62,4 +24,24 @@ const newReview = await Review.create({
     ],
     recomendation: "cleaner bathrooms "
 })
- console.log(newReview);
+//  console.log(newReview);
+
+ const newEmployee = await employee.create({
+    name: "kygo wrabel",
+    department: "department of it",
+    rating: 5,
+    mostComment: "dull and boring",
+    company: "hrfiuhrghegpkjgo"
+ })
+
+//  console.log(newEmployee)
+
+const newCompany = await company.create({
+    name: "fresh Pickens",
+    rating: 7,
+    comments: ["this comany sucks", "models to determine the truth"]
+})
+const one = await Review.findById("62a45094579ac1b2996dd114").exec()
+one.user = "say you will";
+await one.save();
+console.log(one);
