@@ -16,6 +16,9 @@ mongoose.connect(
     app.listen(8000, ()=>{
         console.log("server has started at port 8000");
     });
+    app.post('/company', controller.createCompany);
+    app.get('/company/:id', controller.getRelevantData);
+    app.get('/employees/:id', controller.getEmployeedata);
 }).catch(()=>{
     console.log("can't connect to database");
 });
