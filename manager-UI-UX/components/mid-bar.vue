@@ -12,7 +12,7 @@
         <main>
             <div class="preview background-blur">
                 <div class="chart">
-                    
+                    <h3>graphs</h3>
                 </div>
             </div>
             <div class="yesterday ">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="live-today background-blur">
-                <h4>samples today</h4>
+                <h4>sample comments today</h4>
                 <div class="sample-examples">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, expedita.</p>
                 </div>
@@ -75,6 +75,11 @@
 <script>
 
 export default {
+    data(){
+        return {
+            randomSamples: []
+        }
+    },
     mounted(){
         let colors = ['#F1BA31','#EF5629','#DC1456'];
         let samples = [...document.querySelectorAll(".sample-examples")]
@@ -82,6 +87,12 @@ export default {
             let colorPicked = this.randomInteger(0,3);
             samples[i].style.color = colors[colorPicked];
         };
+        let id = '62a80d31d6fb58434573ade4'
+        fetch('http://localhost:8000/random/' + id)
+        .then((data)=>{
+            this.randomSamples = data;
+            console.log(this.randomSamples);
+        })
     },
     methods: {
         randomInteger(min, max) {
@@ -92,8 +103,11 @@ export default {
 </script>
 <style>
 .mid {
-    padding: 10px;
+    padding: 20px 0;
     color: var(--main-color);
+    height: 100%;
+    display: grid;
+    column-gap: 50px;
 }
 .top {
     min-width: 650px;
@@ -101,6 +115,7 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     column-gap: 30px;
+    height: 40px;
 }
 .search {
     display: flex;
@@ -126,6 +141,9 @@ export default {
     padding: 10px 13px;
     border-radius: 10px;
 }
+.bell:hover {
+    cursor: pointer;
+}
 main {
     width: 100%;
     display: flex;
@@ -148,21 +166,21 @@ main .yesterday {
     row-gap: 20px;
 }
 main .yesterday .up {
-    height:55%;
+    height:75%;
     width: 100%;
     border-radius: 10px;
 }
 main .yesterday .down {
-    height: 40%;
+    height: 25%;
     width: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 15px;
+    padding: 5px;
 }
 main .yesterday .down .info {
-    font-size: .8rem;
+    font-size: .7rem;
     margin: 0 auto 0 10px;
     padding: 10px 0;
     position: relative;
@@ -175,10 +193,12 @@ main .yesterday .down .info p:nth-child(2) {
 }
 main .yesterday .down img {
     padding: 5px;
+    height: 40px;
     border-radius: 10px;
 }
 main .yesterday .down > p {
     color: var(--main-yellow);
+    font-size: .8rem;
 }
 main .live-today {
     height: 250px;

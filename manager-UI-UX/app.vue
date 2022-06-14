@@ -7,7 +7,6 @@
 
 <style>
 .home {
-  padding: 25px 40px;
   height: 100vh;
   display: flex;
   flex-direction: row;

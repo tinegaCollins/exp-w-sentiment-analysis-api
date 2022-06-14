@@ -35,23 +35,35 @@ exports.createCompany = async (req, res)=>{
     res.send(newCompany._id);
 }
 exports.getRelevantData = async (req, res)=>{
-    const data = await company.findById(req.params.id);
-    const relevantData = {
-        rating: data.overallRating,
-        last6Hours: [3,7,8,3,2,6],
-        generalMood: data.generalMood,
-        ctsr: data.customerSatisfactoryRate
+    try{
+        const data = await company.findById(req.params.id);
+        const relevantData = {
+            rating: data.overallRating,
+            last6Hours: [3,7,8,3,2,6],
+            generalMood: data.generalMood,
+            ctsr: data.customerSatisfactoryRate
+        }
+        res.send(relevantData)
+    }catch{
+        res.status(404).send({error : "not found"})
     }
-    res.send(relevantData)
 }
 exports.getEmployeedata = async (req, res)=>{
-    const data = await company.findById(req.params.id);
-    res.send(data.employees)
+    try{
+        const data = await company.findById(req.params.id);
+        res.send(data.employees)
+    }catch{
+        res.status(404).send({error : "not found"})
+    }
 }
 exports.allEmployees = async (req, res)=>{
-    const data = await company.findById(req.params.id);
-    const employees = await data.employees;
-    res.send(employees);
+    try{
+        const data = await company.findById(req.params.id);
+        const employees = await data.employees;
+        res.send(employees);
+    }catch {
+        res.status(404).send({error : "not found"})
+    }
 }
 exports.randomComments = async (req, res)=>{
     try{

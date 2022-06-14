@@ -347,4 +347,7 @@ a.router-link-exact-active > svg {
 .out img {
     height: 20px;
 }
+.out:hover {
+	cursor: pointer;
+}
 </style>
