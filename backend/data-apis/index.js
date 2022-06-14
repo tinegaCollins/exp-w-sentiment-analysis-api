@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const controller = require("./controllers/index.js")
+const controller = require("./controllers/index.js");
+const userData = require("./models/user-data.js");
 
 
 mongoose.connect(
@@ -9,7 +10,7 @@ mongoose.connect(
 ).then(()=>{
     const app = express();
     app.use(express.json());
-
+    //routes
     app.post('/user-data', controller.sendUserData);
     app.post('/user', controller.createNewUser);
     app.patch('/user/:id', controller.updateUserRewards);
@@ -19,6 +20,10 @@ mongoose.connect(
     app.post('/company', controller.createCompany);
     app.get('/company/:id', controller.getRelevantData);
     app.get('/employees/:id', controller.getEmployeedata);
+    app.get('/allEmployees/:id', controller.allEmployees);
+    app.get('/random/:id', controller.randomComments);
+
+    //data analysis
 }).catch(()=>{
     console.log("can't connect to database");
 });

@@ -48,3 +48,29 @@ exports.getEmployeedata = async (req, res)=>{
     const data = await company.findById(req.params.id);
     res.send(data.employees)
 }
+exports.allEmployees = async (req, res)=>{
+    const data = await company.findById(req.params.id);
+    const employees = await data.employees;
+    res.send(employees);
+}
+exports.randomComments = async (req, res)=>{
+    try{
+        let comments = await userData.find({companyID: req.params.id}, 'generalDescrition');
+        //find random 
+        function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        let i = 0;
+        const randomComments = [];
+        while(i < 3){
+            let result = randomNumber(0,comments.length - 1);
+            randomComments.push(comments[result]);
+            i++;
+        }
+        res.send(randomComments);
+    }
+    catch{
+        res.status(404).send({error : "not found"})
+    }
+}
+
