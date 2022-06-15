@@ -93,6 +93,11 @@ export default {
             this.randomSamples = data;
             console.log(this.randomSamples);
         })
+        fetch('http://localhost:8000/company/' + id)
+        .then((data)=>{
+            console.log(data);
+        })
+
     },
     methods: {
         randomInteger(min, max) {

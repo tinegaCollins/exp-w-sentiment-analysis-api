@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const express = require("express");
 const controller = require("./controllers/index.js");
 const userData = require("./models/user-data.js");
+const cors = require("cors");
+
+
 
 
 mongoose.connect(
@@ -10,6 +13,7 @@ mongoose.connect(
 ).then(()=>{
     const app = express();
     app.use(express.json());
+    // app.use(cors());
     //routes
     app.post('/user-data', controller.sendUserData);
     app.post('/user', controller.createNewUser);
