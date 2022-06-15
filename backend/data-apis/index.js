@@ -13,7 +13,7 @@ mongoose.connect(
 ).then(()=>{
     const app = express();
     app.use(express.json());
-    // app.use(cors());
+    app.use(cors());
     //routes
     app.post('/user-data', controller.sendUserData);
     app.post('/user', controller.createNewUser);

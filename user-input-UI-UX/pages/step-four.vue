@@ -26,11 +26,11 @@ export default {
                 userID: userId.value,
                 companyID: companyId.value,
                 rating: rangeStore.rangeNow,
-                review: rangeStore.descriptionNow,
-                recomendations: rangeStore.recomendationsNow,
+                generalDescrition: rangeStore.descriptionNow,
+                recomendation: rangeStore.recomendationsNow,
                 employeeData: rangeStore.empData
             }
-            console.log(dataToBeSent);
+
             //api call to send data to server
             const response = await fetch('http://localhost:8000/user-data/', {
                 method: 'POST',

@@ -25,10 +25,10 @@ export default {
         const store = useRangeStore()
         const handleEmployee = function(){
             store.$patch((state)=>{
-                state.empData.push({
+                state.employeeData.push({
                     employeeID: employeeId.value,
                     rating: rating.value,
-                    comments: empComments.value
+                    description: empComments.value
                 })
             })
             const router = useRouter()

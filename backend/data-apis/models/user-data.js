@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 const schema = new  mongoose.Schema({
+    userID: String,
     companyID: String,
     rating: Number,
     generalDescrition: String,
     recomendation: String,
-    specialDescrition: [
+    employeeData: [
         {
             employeeID: String,
             rating: Number,
