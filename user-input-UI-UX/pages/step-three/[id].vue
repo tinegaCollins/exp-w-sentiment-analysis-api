@@ -3,32 +3,39 @@
 <div class="stepThree">
     <h4>name of employee</h4>
     <img src="../../assets/face-shot.png">
-    <div class="stars">
-        <div ref="star" class="star"></div>
-        <div ref="star" class="star"></div>
-        <div ref="star" class="star"></div>
-        <div ref="star" class="star"></div>
-        <div ref="star" class="star"></div>
-    </div>
-    <input type="text" placeholder="comments">
+    <input type="range" name="range" id="" v-model="rating" min="0" max="10">
+    <p>{{ rating}}</p>
+    <input type="text" placeholder="comments" v-model="empComments">
     <div class="buttons">
-        <button>back</button>
-        <NuxtLink to="/step-four"><button>next</button></NuxtLink>
+        <NuxtLink to="/step-three"><button>back</button></NuxtLink>
+        <button @click.once="handleEmployee">next</button>
     </div>
 </div>
 </template>
 
 
 <script>
-
+import { useRangeStore } from '../../stores/main-store.js'
 export default {
     setup(){
-        // let stars = [...document.querySelectorAll(".star")]
-        const star = ref(null);
-        return { star }
-    },
-    mounted(){
-        console.log(star.value)
+        const rating = ref(0);
+        const empComments = ref('');
+        const employeeId = ref(0); //change on fetch
+
+        const store = useRangeStore()
+        const handleEmployee = function(){
+            store.$patch((state)=>{
+                state.empData.push({
+                    employeeID: employeeId.value,
+                    rating: rating.value,
+                    comments: empComments.value
+                })
+            })
+            const router = useRouter()
+            router.push({ path: "/step-four" });
+        }
+
+        return { rating, empComments, handleEmployee }
     }
 }
 
@@ -41,7 +48,7 @@ export default {
     display: grid;
     place-items: center;
     font-family: var(--main-font);
-    row-gap: 20px;
+    row-gap: 15px;
 }
 .stepThree img{
     height: 200px;

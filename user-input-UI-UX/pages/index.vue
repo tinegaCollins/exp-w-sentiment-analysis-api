@@ -2,7 +2,7 @@
     <div class="wrapper">
         <p class="first">Help us improve your Expirience</p>
         <img src="../assets/undraw_reviews_lp8w.svg">
-        <button @click.once="next">Start</button>
+        <nuxt-link to="/step-one"><button @click.once="next">Start</button></nuxt-link>
         <p class="last">The comments are anonymous and the account details are encryted</p>
     </div>
 </template>
@@ -11,11 +11,6 @@
 
 
 export default {
-    methods: {
-        next(){
-            this.$router.push("step-one")
-        }
-    }
 }
 
 </script>

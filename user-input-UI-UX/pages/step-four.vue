@@ -2,19 +2,49 @@
 <div class="stepFour">
     <h4>any recomendations for us to make our services/product better</h4>
     <input type="text" placeholder="type here" v-model="recomendations">
-    <NuxtLink to="/thanks"><button>finish</button></NuxtLink>
+    <button @click.once="handleRecomendations">finish</button>
 </div>
 </template>
 
 
 <script>
 
+import { useRangeStore } from '../stores/main-store.js'
 
 export default {
-    data(){
-        return {
-            recomendations: ''
+    setup(){
+        const userId = ref(0);// changed on fetch
+        const companyId = ref(0);// changed on fetch
+        const recomendations = ref('');
+        const handleRecomendations = async function(){
+            const rangeStore = useRangeStore()
+            rangeStore.$patch({
+                recomendationsNow: recomendations.value
+            })
+
+            const dataToBeSent = {
+                userID: userId.value,
+                companyID: companyId.value,
+                rating: rangeStore.rangeNow,
+                review: rangeStore.descriptionNow,
+                recomendations: rangeStore.recomendationsNow,
+                employeeData: rangeStore.empData
+            }
+            console.log(dataToBeSent);
+            //api call to send data to server
+            const response = await fetch('http://localhost:8000/user-data/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToBeSent)
+            })
+            const data = await response.json()
+            console.log(data);
+            // const router = useRouter()
+            // router.push({ path: "/thanks" });
         }
+        return { recomendations, handleRecomendations }
     }
 }
 </script>

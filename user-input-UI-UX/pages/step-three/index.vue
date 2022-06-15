@@ -1,67 +1,34 @@
 <template>
     <div class="all-in-ste-three">
         <h3>direct comments on employees</h3>
-<p>The comments are anonymous</p>
-<div class="emp-wrapper">
-    <NuxtLink to="/step-four"><button>skip</button></NuxtLink>
-    <div class="employees">
-        <div class="single">
-            <NuxtLink to="/step-three/id45">
-            <img src="../../assets/face-shot.png">
-            <p><strong>Name:</strong> Grace msalame</p>
-            <p><strong>department: </strong>soaps and detergents</p>
-            </NuxtLink>
+        <p>The comments are anonymous</p>
+        <div class="emp-wrapper">
+            <NuxtLink to="/step-four"><button>skip</button></NuxtLink>
+            <div class="employees">
+                <div class="single">
+                    <NuxtLink to="/step-three/id45">
+                        <img src="../../assets/face-shot.png">
+                        <p><strong>Name:</strong> Grace msalame</p>
+                        <p><strong>department: </strong>soaps and detergents</p>
+                    </NuxtLink>
+                </div>
+            </div>
+            <NuxtLink to="/step-four"><button>next</button></NuxtLink>
         </div>
-        <div class="single">
-            <NuxtLink to="/step-three/id45">
-            <img src="../../assets/face-shot.png">
-            <p><strong>Name:</strong> Grace msalame</p>
-            <p><strong>department: </strong>soaps and detergents</p>
-            </NuxtLink>
-        </div>
-        <div class="single">
-            <NuxtLink to="/step-three/id45">
-            <img src="../../assets/face-shot.png">
-            <p><strong>Name:</strong> Grace msalame</p>
-            <p><strong>department: </strong>soaps and detergents</p>
-            </NuxtLink>
-        </div>
-        <div class="single">
-            <NuxtLink to="/step-three/id45">
-            <img src="../../assets/face-shot.png">
-            <p><strong>Name:</strong> Grace msalame</p>
-            <p><strong>department: </strong>soaps and detergents</p>
-            </NuxtLink>
-
-        </div>
-        <div class="single">
-            <NuxtLink to="/step-three/id45">
-            <img src="../../assets/face-shot.png">
-            <p><strong>Name:</strong> Grace msalame</p>
-            <p><strong>department: </strong>soaps and detergents</p>
-            </NuxtLink>
-
-        </div>
-        <div class="single">
-            <NuxtLink to="/step-three/id45">
-            <img src="../../assets/face-shot.png">
-            <p><strong>Name:</strong> Grace msalame</p>
-            <p><strong>department: </strong>soaps and detergents</p>
-            </NuxtLink>
-        </div>
-    </div>
-    <NuxtLink to="/step-four"><button>next</button></NuxtLink>
-</div>
-<NuxtPage></NuxtPage>
+        <NuxtPage></NuxtPage>
     </div>
 </template>
 
+<script>
+
+</script>
 
 <style>
 
 h3,p {
     text-align: center;
     font-family: var(--main-font);
+    font-size: .9rem;
 }
 .emp-wrapper {
     display: grid;

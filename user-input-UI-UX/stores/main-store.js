@@ -3,7 +3,9 @@ import { defineStore } from 'pinia'
 export const useRangeStore = defineStore('range',{
     state: ()=>({
         rangeNow: 5,
-        comments: "fuckkkk"
+        descriptionNow: '',
+        recomendationsNow: '',
+        empData: []
     }),
     getters: {
         get_range: (state) => state.rangeNow

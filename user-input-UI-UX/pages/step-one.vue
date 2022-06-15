@@ -10,7 +10,7 @@
 
 
 <script>
-import { useRangeStore } from '../stores/range.js'
+import { useRangeStore } from '../stores/main-store.js'
 export default {
     setup(){
         const range = ref(0);
@@ -19,7 +19,8 @@ export default {
             rangeStore.$patch({
                 rangeNow: range.value
             })
-            console.log(rangeStore.rangeNow);
+            const router = useRouter()
+            router.push({ path: "/step-two" });
         }
         return { range, handleRange }
     }

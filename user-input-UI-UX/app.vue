@@ -29,11 +29,7 @@ import './assets/main.css'
                  four: false
              }
          }
-     },
-    mounted(){
-        let path = this.$route.fullPath
-        console.log(path)
-    }
+     }
  }
 
 </script>
