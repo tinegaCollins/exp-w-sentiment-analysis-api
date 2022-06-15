@@ -5,7 +5,7 @@ const company = require("../models/company.js")
 exports.sendUserData = async (req, res)=>{
     const newData = await userData(req.body);
     await newData.save();
-    res.send(newData);
+    res.send(true);   
 }
 exports.updateUserRewards = async (req, res)=>{
     try{

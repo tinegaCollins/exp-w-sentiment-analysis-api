@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const controller = require("./controllers/index.js");
-const userData = require("./models/user-data.js");
 const cors = require("cors");
 
 

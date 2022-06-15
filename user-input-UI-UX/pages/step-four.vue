@@ -40,9 +40,13 @@ export default {
                 body: JSON.stringify(dataToBeSent)
             })
             const data = await response.json()
-            console.log(data);
-            // const router = useRouter()
-            // router.push({ path: "/thanks" });
+            if(data == true){
+                const router = useRouter()
+                router.push({ path: "/thanks" });
+            }
+            else{
+                console.log('data not sent')
+            }
         }
         return { recomendations, handleRecomendations }
     }
