@@ -4,7 +4,7 @@
         <p>on a scale of 1-10, how would you say our service was today</p>
         <p>{{range}}</p>
         <input type="range" name="range" id="1" min="0" max="10" v-model="range">
-        <NuxtLink to="/step-two"><button @click="handleRange">next</button></NuxtLink>
+        <button @click="handleRange">next</button>
     </div>
 </template>
 
@@ -14,10 +14,11 @@ import { useRangeStore } from '../stores/range.js'
 export default {
     setup(){
         const range = ref(0);
-        const rangeStore = useRangeStore()
-        range.value = rangeStore.rangeNow;
         const handleRange = function(){
             const rangeStore = useRangeStore()
+            rangeStore.$patch({
+                rangeNow: range.value
+            })
             console.log(rangeStore.rangeNow);
         }
         return { range, handleRange }
