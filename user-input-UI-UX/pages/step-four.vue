@@ -1,8 +1,8 @@
 <template>
 <div class="stepFour">
     <h4>any recomendations for us to make our services/product better</h4>
-    <input type="text" placeholder="type here" v-model="recomendations">
-    <button @click.once="handleRecomendations">finish</button>
+    <textarea type="text" placeholder="type here" v-model="recomendations"></textarea>
+    <button @click.once="handleRecomendations" class="custom-btn">finish</button>
 </div>
 </template>
 
@@ -62,10 +62,10 @@ export default {
     padding: 20px;
     font-size: .8rem;
 }
-.stepFour input {
-    height: 50px;
+.stepFour textarea {
+    height: 100px;
     width: 300px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: var(--main-orange);
     border: none;
     outline: none;

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-    // import { log } from 'console'; can't believe i just did this lol
     import { useRangeStore } from '../stores/main-store.js'
     export default {
     setup(){
