@@ -1,11 +1,10 @@
 <template>
-
 <div class="stepThree">
     <h4>name of employee</h4>
     <img src="../../assets/face-shot.png">
     <input type="range" name="range" id="" v-model="rating" min="0" max="10">
     <p>{{ rating}}</p>
-    <input type="text" placeholder="comments" v-model="empComments">
+    <textarea placeholder="comments" v-model="empComments"></textarea>
     <div class="buttons">
         <NuxtLink to="/step-three"><button>back</button></NuxtLink>
         <button @click.once="handleEmployee">next</button>
@@ -18,10 +17,28 @@
 import { useRangeStore } from '../../stores/main-store.js'
 export default {
     setup(){
+         useHead({
+            link: {
+                rel: "icon",
+                href: "../../assets/like-thumb-up-svgrepo-com.svg"
+            }
+        })
         const rating = ref(0);
         const empComments = ref('');
-        const employeeId = ref(0); //change on fetch
-
+        const router = useRoute();
+        const employeeId = router.params.id;
+        console.log(employeeId);
+        const employeeDetails = ref({});
+        onMounted(() => {
+            fetch('http://localhost:8000/employees/' + employeeId)
+            .then(response => response.json())
+            .then(data => {
+                employeeDetails.value = data;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        })
         const store = useRangeStore()
         const handleEmployee = function(){
             store.$patch((state)=>{
@@ -35,7 +52,7 @@ export default {
             router.push({ path: "/step-four" });
         }
 
-        return { rating, empComments, handleEmployee }
+        return { rating, empComments, handleEmployee , employeeDetails}
     }
 }
 
@@ -54,7 +71,7 @@ export default {
     height: 200px;
     width: auto;
 }
-.stepThree input {
+.stepThree textarea {
     height: 50px;
     width: 200px;
     border: none;

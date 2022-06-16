@@ -16,6 +16,8 @@ nav {
   font-family: var(--main-font);
   width: 60%;
   margin-top: 20px;
+  align-self: flex-start;
+  margin-left: 5%;
 }
 nav h3{
   font-size: .9rem;
@@ -27,6 +29,6 @@ nav h3 strong {
   font-size: 1.5rem;
 }
 nav img {
-  height: 80%;
+  height: 60%;
 }
 </style>

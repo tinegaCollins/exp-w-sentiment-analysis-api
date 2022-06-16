@@ -1,8 +1,8 @@
 <template>
 <div class="stepTwo">
     <h4>add a description of our service </h4>
-    <input type="text" placeholder="type your message here" v-model="description">
-    <button @click="handleDescription">next</button>
+    <textarea placeholder="type your message here" v-model="description" rows="5" cols="60"></textarea>
+    <button @click="handleDescription" class="custom-btn">next</button>
 </div>
 </template>
 
@@ -34,11 +34,11 @@
     padding: 20px;
     row-gap: 30px;
 }
-.stepTwo input {
-    height: 100px;
+.stepTwo textarea {
+    height: 150px;
     width: 300px;
     border-radius: 5px;
-    background-color: var(--main-yellow);
+    background-color: var(--main-blue);
     border: none;
     outline: none;
     appearance: none;
@@ -46,8 +46,9 @@
     font-size: 1rem;
     position: relative;
     line-height: 1.5;
+    color: var(--main-color);
 }
-.stepTwo input::placeholder {
+.stepTwo textarea::placeholder {
     color: var(--main-blue);
     font-size: 1rem;
     position: absolute;

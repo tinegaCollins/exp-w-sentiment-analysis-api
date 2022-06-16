@@ -3,24 +3,48 @@
         <h3>direct comments on employees</h3>
         <p>The comments are anonymous</p>
         <div class="emp-wrapper">
-            <NuxtLink to="/step-four"><button>skip</button></NuxtLink>
+            <NuxtLink to="/step-four"><button class="custom-btn">skip</button></NuxtLink>
             <div class="employees">
-                <div class="single">
-                    <NuxtLink to="/step-three/id45">
-                        <img src="../../assets/face-shot.png">
-                        <p><strong>Name:</strong> Grace msalame</p>
-                        <p><strong>department: </strong>soaps and detergents</p>
+                <div class="single" v-for="employee in employees" :key="employee.Id">
+                    <NuxtLink :to=" url + employee._id">
+                        <img :src="employee.image">
+                        <p><strong>Name:</strong> {{ employee.name}}</p>
+                        <p><strong>department: </strong>{{employee.department}}</p>
                     </NuxtLink>
                 </div>
             </div>
-            <NuxtLink to="/step-four"><button>next</button></NuxtLink>
+            <NuxtLink to="/step-four"><button class="custom-btn">next</button></NuxtLink>
         </div>
         <NuxtPage></NuxtPage>
     </div>
 </template>
 
 <script>
+import { useRangeStore } from '../../stores/main-store.js'
+export default {
+    setup(){
+        const store = useRangeStore()
+        const companyid = store.companyID;
+        const employees = ref([]);
+        onMounted(() => {
+            fetch('http://localhost:8000/employees/' + companyid)
+            .then(response => response.json())
+            .then(data => {
+                employees.value = data;
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
+        })
+        const url = ref('/step-three/');
+
+        return {
+            employees,
+            url
+        }
+    }
+}
 </script>
 
 <style>

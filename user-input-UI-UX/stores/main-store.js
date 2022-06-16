@@ -5,7 +5,8 @@ export const useRangeStore = defineStore('range',{
         rangeNow: 5,
         descriptionNow: '',
         recomendationsNow: '',
-        employeeData: []
+        employeeData: [],
+        companyID: '123'
     }),
     getters: {
         get_range: (state) => state.rangeNow

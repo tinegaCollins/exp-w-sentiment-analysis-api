@@ -18,7 +18,7 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
       script: [
-        // <script src="https://myawesome-lib.js"></script>
+        
       ],
       link: [
         { rel: 'icon', href: './assets/like-thumb-up-svgrepo-com.svg' }
