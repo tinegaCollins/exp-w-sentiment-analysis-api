@@ -6,8 +6,8 @@
     <p>{{ rating}}</p>
     <textarea placeholder="comments" v-model="empComments"></textarea>
     <div class="buttons">
-        <NuxtLink to="/step-three"><button>back</button></NuxtLink>
-        <button @click.once="handleEmployee">next</button>
+        <NuxtLink to="/step-three"><button class="custom-btn">back</button></NuxtLink>
+        <button @click.once="handleEmployee" class="custom-btn">next</button>
     </div>
 </div>
 </template>
@@ -65,7 +65,7 @@ export default {
     display: grid;
     place-items: center;
     font-family: var(--main-font);
-    row-gap: 15px;
+    row-gap: 20px;
 }
 .stepThree img{
     height: 200px;
