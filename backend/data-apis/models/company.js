@@ -1,28 +1,42 @@
 const mongoose = require("mongoose");
 
-const schema = new mongoose.Schema({
-    companyDetails: {
-        title: String,
-        email: String,
-        password: String
+const companySchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
     },
-    overallRating: Number,
-    hourlyData: [
-        {
-            rating: Number,
-            time: String
-        }
-    ],
-    generalMood: String,
-    customerSatisfactoryRate: Number,
-    employees: [
-        {
-            name: String,
-            id: Number,
-            rating: Number,
-            generalMood: String
-        }
-    ]
-})
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    //link company to reviews
+    reviews: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "reviews"
+    },
+    generalRating: {
+        overall: Number,
+        thisMonth: Number
+    },
+    generalReviews: {
+        overall: String,
+        thisMonth: String
+    },
+    generalRecommendation: {
+        overall: String,
+        thisMonth: String
+    },
+    //link company to employees
+    employees: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "employees"
+    }
+});
 
-module.exports = mongoose.model("company", schema);
+const company = mongoose.model("company", companySchema);
+
+export default company;
