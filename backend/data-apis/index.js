@@ -13,20 +13,16 @@ mongoose.connect(
     const app = express();
     app.use(express.json());
     app.use(cors());
-    //routes
-    app.post('/user-data', controller.sendUserData);
-    app.post('/user', controller.createNewUser);
-    app.patch('/user/:id', controller.updateUserRewards);
+    app.patch('/rating', controller.sendRatings);
+    app.get('/rating/:id', controller.getRatings);
+    app.patch('/review', controller.sendReviews);
+    app.get('/review/:id', controller.getReviews);
+    app.patch('/recommendation', controller.sendRecommendations);
+    app.get('/recommendation/:id', controller.getRecommendations);
     app.listen(8000, ()=>{
         console.log("server has started at port 8000");
     });
-    app.post('/company', controller.createCompany);
-    app.get('/company/:id', controller.getRelevantData);
-    app.get('/employees/:id', controller.getEmployeedata);
-    app.get('/allEmployees/:id', controller.allEmployees);
-    app.get('/random/:id', controller.randomComments);
 
-    //data analysis
-}).catch(()=>{
-    console.log("can't connect to database");
+}).catch((err)=>{
+    console.log(err);
 });

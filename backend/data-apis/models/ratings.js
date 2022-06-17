@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const reviewSchema = new mongoose.Schema({
+const ratingSchema = new mongoose.Schema({
     companyID: String,
-    reviews: [{
-        review: String,
+    rating: [{
+        rate: Number,
         created: {
             type: Date,
             default: Date.now
@@ -11,4 +11,4 @@ const reviewSchema = new mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.model("review", reviewSchema);
+module.exports = mongoose.model("rating", ratingSchema);
