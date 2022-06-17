@@ -20,7 +20,10 @@ exports.sendRatings = async (req, res) => {
         );
         const allRatings = await ratings.find({ companyID: req.body.companyID }).select("rating");
         //get a spefic field from the array of objects
-        await res.send(true);
+        let ratingsArray = await allRatings.rating.map((element)=>{
+            return element.rate
+        })
+        await res.send(ratingsArray);
     }
     catch(err){
         console.log(err);
