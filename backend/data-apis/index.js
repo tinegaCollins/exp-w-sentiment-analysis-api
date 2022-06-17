@@ -19,6 +19,10 @@ mongoose.connect(
     app.get('/review/:id', controller.getReviews);
     app.patch('/recommendation', controller.sendRecommendations);
     app.get('/recommendation/:id', controller.getRecommendations);
+    app.patch('/employee/:id', controller.sendEmployeeData);
+    app.get('/employees/:companyID', controller.getAllEmployees);
+    app.post('/employee', controller.createNewEmployee);
+    app.post('/company', controller.createCompany);
     app.listen(8000, ()=>{
         console.log("server has started at port 8000");
     });

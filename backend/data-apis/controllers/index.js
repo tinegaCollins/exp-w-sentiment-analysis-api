@@ -1,6 +1,8 @@
 const ratings = require("../models/ratings.js");
 const reviews = require("../models/reviews.js");
 const recommendations = require("../models/recommendations.js");
+const employees = require("../models/employees.js");
+const company = require("../models/company.js");
 
 
 exports.sendRatings = async (req, res) => {
@@ -16,6 +18,8 @@ exports.sendRatings = async (req, res) => {
             }
             }
         );
+        const allRatings = await ratings.find({ companyID: req.body.companyID }).select("rating");
+        //get a spefic field from the array of objects
         await res.send(true);
     }
     catch(err){
@@ -95,4 +99,91 @@ exports.getRecommendations = async (req, res) => {
     catch(err){
         console.log(err);
     }
+}
+
+exports.sendEmployeeData = async (req, res) => {
+    try{
+        await employees.updateOne(
+            { _id: req.params.id },
+            {
+            $push: {
+                ratings: {
+                    rating: req.body.ratings.rating
+                }
+            }
+            }
+        );
+        await employees.updateOne(
+            { _id: req.params.id },
+            {
+                $push: {
+                    reviews: {
+                        review: req.body.reviews.review
+                    }
+                }
+            }
+        );
+        await res.send(true);
+    }
+    catch(err){
+        console.log(err);
+        res.send(false);
+    }
+}
+
+exports.getEmployeeData = async (req, res) => {
+    try{
+        const data = await employees.findById(req.params.id);
+        res.send(data);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+exports.createNewEmployee = async (req, res) => {
+    try{
+        const newEmployee = new employees(req.body);
+        await newEmployee.save();
+        await res.send(true);
+    }
+    catch(err){
+        console.log(err);
+        res.send(false);
+    }
+}
+
+exports.getAllEmployees = async (req, res) => {
+    try{
+        // get data with req.body.id
+        const data = await employees.find({ companyID: `${req.params.companyID}` });
+        console.log("found none");
+        res.send(data);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+
+exports.createCompany = async (req, res) => {
+    const newCompany = new company(req.body);
+    await newCompany.save();
+    const companyId = await newCompany._id;
+    const newRating = {
+        companyID: companyId,
+        rating: []
+    }
+    await ratings.create(newRating);
+    const newreview = {
+        companyID: companyId,
+        reviews: []
+    }
+    await reviews.create(newreview);
+    const newrecommendation = {
+        companyID: companyId,
+        recommendations: []
+    }
+    await recommendations.create(newrecommendation);
+    res.send(true);
 }
