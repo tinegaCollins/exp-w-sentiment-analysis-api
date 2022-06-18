@@ -4,7 +4,7 @@ const recommendations = require("../models/recommendations.js");
 const employees = require("../models/employees.js");
 const company = require("../models/company.js");
 
-
+let text;
 exports.sendRatings = async (req, res) => {
     try{
         await ratings.updateOne(
@@ -19,11 +19,18 @@ exports.sendRatings = async (req, res) => {
             }
         );
         const allRatings = await ratings.find({ companyID: req.body.companyID }).select("rating");
-        //get a spefic field from the array of objects
-        let ratingsArray = await allRatings.rating.map((element)=>{
-            return element.rate
-        })
-        await res.send(ratingsArray);
+        let rates = allRatings[0].rating.map(rate => rate.rate);
+        let average = rates.reduce((a, b) => a + b, 0)/rates.length;
+        average = Math.round(average);
+        await company.updateOne(
+            { _id: req.body.companyID },
+            {
+                $set: {
+                    ratings: average
+                }
+            }
+        );
+        await res.send(true);
     }
     catch(err){
         console.log(err);
