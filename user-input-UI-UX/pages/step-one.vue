@@ -19,7 +19,7 @@ const range = ref(0)
 async function handleRange() {
     const datatosend = {
         companyID : id,
-        rate: range.value
+        rate: range.value * 2
     }
     const response = await fetch('http://localhost:8000/rating', {
         method: 'PATCH',

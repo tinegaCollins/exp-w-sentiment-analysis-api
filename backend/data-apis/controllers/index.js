@@ -196,3 +196,12 @@ exports.createCompany = async (req, res) => {
     await recommendations.create(newrecommendation);
     res.send(true);
 }
+
+exports.getCompanyData = async (req, res) => {
+    try{
+        const data = await company.find({})
+    }
+    catch{
+        
+    }
+}

@@ -264,5 +264,6 @@ main .top-employees img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    object-fit: cover;
 }
 </style>

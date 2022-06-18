@@ -47,13 +47,13 @@
     font-size: .8rem;
 }
 .stepFour textarea {
-    height: 100px;
+    height: 150px;
     width: 300px;
     border-radius: 5px;
-    background-color: var(--main-orange);
     border: none;
     outline: none;
     appearance: none;
+    padding: 10px;
 }
 .stepFour button {
     margin-top: 30px;

@@ -54,13 +54,6 @@
     position: relative;
     line-height: 1.5;
     color: var(--main-color);
-}
-.stepTwo textarea::placeholder {
-    color: var(--main-blue);
-    font-size: 1rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 10px;
 }
 </style>
