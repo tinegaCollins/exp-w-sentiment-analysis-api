@@ -13,7 +13,6 @@
 
 
 <script>
-import { useRangeStore } from '../stores/main-store.js'
 export default {
     setup(){
         useHead({
@@ -23,10 +22,7 @@ export default {
         })
         const range = ref(0);
         const handleRange = function(){
-            const rangeStore = useRangeStore()
-            rangeStore.$patch({
-                rangeNow: range.value
-            })
+            fetch
             const router = useRouter()
             router.push({ path: "/step-two" });
         }
