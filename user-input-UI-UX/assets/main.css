@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
-    --bg-color: #080F2B;
+    --bg-color: rgb(8, 15, 43);
     --light-bac: hsl(228, 69%, 30%);
     --main-color: #FFFFFF;
     --main-pink: #DC1456;

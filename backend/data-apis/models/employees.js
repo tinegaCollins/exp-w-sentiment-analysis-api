@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const employeeSchema = new mongoose.Schema({
     companyID: String,
     name: String,
+    image: String,
     department: String,
     ratings: [
         {

@@ -1,27 +1,35 @@
 <template>
 <div class="stepTwo">
     <h4>add a description of our service </h4>
-    <textarea placeholder="type your message here" v-model="description" rows="5" cols="60"></textarea>
-    <button @click="handleDescription" class="custom-btn">next</button>
+    <textarea placeholder="type your message here" v-model="review" rows="5" cols="60"></textarea>
+    <button @click="handleReview" class="custom-btn">next</button>
 </div>
 </template>
 
-<script>
-    import { useRangeStore } from '../stores/main-store.js'
-    export default {
-    setup(){
-        const description = ref('');
-        const handleDescription = function(){
-            const rangeStore = useRangeStore()
-            rangeStore.$patch({
-                descriptionNow: description.value
-            })
-            const router = useRouter()
-            router.push({ path: "/step-three" });
+<script setup>
+    const review = ref('');
+    const id = '62ac98e13b8ffe9804c25005'
+    async function handleReview() {
+        const datatosend = {
+            companyID : id,
+            review: review.value
         }
-        return { description, handleDescription }
+        const response = await fetch('http://localhost:8000/review', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datatosend)
+        })
+        const data = await response.json()
+        if (data == true) {
+            const router = useRouter()
+            router.push('/step-three')
+        }
+        else {
+            console.log('error')
+        }
     }
-}
 </script>
 
 <style>

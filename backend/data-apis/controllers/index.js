@@ -12,7 +12,7 @@ exports.sendRatings = async (req, res) => {
             {
             $push: {
                 rating: {
-                    rate: req.body.rating.rate,
+                    rate: req.body.rate,
                     created: Date.now()
                 }
             }
@@ -55,7 +55,7 @@ exports.sendReviews = async (req, res) => {
             {
             $push: {
                 reviews: {
-                    review: req.body.reviews.review,
+                    review: req.body.review,
                     created: Date.now()
                 }
             }
@@ -64,7 +64,6 @@ exports.sendReviews = async (req, res) => {
         await res.send(true);
     }
     catch(err){
-        console.log(err);
         res.send(false);
     }
 }
@@ -118,7 +117,7 @@ exports.sendEmployeeData = async (req, res) => {
             {
             $push: {
                 ratings: {
-                    rating: req.body.ratings.rating
+                    rating: req.body.rating
                 }
             }
             }
@@ -128,7 +127,7 @@ exports.sendEmployeeData = async (req, res) => {
             {
                 $push: {
                     reviews: {
-                        review: req.body.reviews.review
+                        review: req.body.review
                     }
                 }
             }
@@ -167,10 +166,10 @@ exports.getAllEmployees = async (req, res) => {
     try{
         // get data with req.body.id
         const data = await employees.find({ companyID: `${req.params.companyID}` });
-        console.log("found none");
         res.send(data);
     }
     catch(err){
+        console.log("found  none");
         console.log(err);
     }
 }

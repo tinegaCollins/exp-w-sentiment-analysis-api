@@ -8,8 +8,8 @@
                 <div class="single" v-for="employee in employees" :key="employee.Id">
                     <NuxtLink :to=" url + employee._id">
                         <img :src="employee.image">
-                        <p><strong>Name:</strong> {{ employee.name}}</p>
-                        <p><strong>department: </strong>{{employee.department}}</p>
+                        <p>Name: {{ employee.name}}</p>
+                        <p>department:{{employee.department}}</p>
                     </NuxtLink>
                 </div>
             </div>
@@ -19,32 +19,22 @@
     </div>
 </template>
 
-<script>
-import { useRangeStore } from '../../stores/main-store.js'
-export default {
-    setup(){
-        const store = useRangeStore()
-        const companyid = store.companyID;
-        const employees = ref([]);
-        onMounted(() => {
-            fetch('http://localhost:8000/employees/' + companyid)
-            .then(response => response.json())
+<script setup>  
+    const id = '62ac98e13b8ffe9804c25005';
+    const employees = ref([]);
+    onMounted(() => {
+        //get all employees from the database with fetch
+        fetch(`http://localhost:8000/employees/${id}`)
+            .then(res => res.json())
             .then(data => {
                 employees.value = data;
             })
-            .catch(error => {
-                console.log(error);
+            .catch(err => {
+                console.log(err);
             });
-
-        })
-        const url = ref('/step-three/');
-
-        return {
-            employees,
-            url
-        }
-    }
-}
+        console.log(employees.value);
+    })
+    const url = ref('/step-three/');
 </script>
 
 <style>
@@ -71,7 +61,7 @@ h3,p {
 }
 .single a{
    border: 1px solid var(--main-orange); 
-   padding: 5px;
+   padding: 10px;
    font-size: .8rem;
    margin: 3px;
    border-radius: 10px;
@@ -80,13 +70,20 @@ h3,p {
    align-items: center;
    text-decoration: none;
    color: #ffffff;
+   height: 200px;
+   width: 150px;
 }
 .single img {
-    height: auto;
+    object-fit: cover;
+    height: 70px;
     width: 70px;
+    border-radius: 50%;
+    border: 3px solid hsl(228, 69%, 20%);
 }
 .single p {
     max-width: 17ch;
     margin: 10px 0;
+    font-size: .9rem;
+    font-weight: 400;
 }
 </style>

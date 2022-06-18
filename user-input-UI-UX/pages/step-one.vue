@@ -3,41 +3,38 @@
         <h4>step one</h4>
         <div class="emojis" >
             <p>{{range}}</p>
-            <lottie-player v-if="emoji" src="https://assets1.lottiefiles.com/private_files/lf30_t2twv8of.json"  background="transparent"  speed="0.5"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player>
         </div>
         <p>on a scale of 1-5, how would you say our service was today</p>
-        <input type="range" name="range" id="1" min="0" max="5" v-model="range" @mouseleave="handleEmojis">
+        <input type="range" name="range" id="1" min="0" max="5" v-model="range">
         <button @click="handleRange" class="custom-btn">next</button>
     </div>
 </template>
 
 
-<script>
-export default {
-    setup(){
-        useHead({
-            script: {
-                src:"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
-            }
-        })
-        const range = ref(0);
-        const handleRange = function(){
-            fetch
-            const router = useRouter()
-            router.push({ path: "/step-two" });
-        }
-        //handling emojis
-        const emoji = ref(false);
-        const emojiImg = [
-            "https://assets1.lottiefiles.com/private_files/lf30_t2twv8of.json",
-            //other emojis
-        ]
-        const selectedEmoji = ref();
-        const handleEmojis = function(){
-            selectedEmoji.value = emojiImg[range.value/2 - 1]
-            emoji.value = true
-        }
-        return { range, handleRange, emoji, handleEmojis, selectedEmoji }
+<script setup>
+
+const id = '62ac98e13b8ffe9804c25005'
+const range = ref(0)
+
+async function handleRange() {
+    const datatosend = {
+        companyID : id,
+        rate: range.value
+    }
+    const response = await fetch('http://localhost:8000/rating', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datatosend)
+    })
+    const data = await response.json()
+    if (data == true) {
+        const router = useRouter()
+        router.push('/step-two')
+    }
+    else {
+        console.log('error')
     }
 }
 </script>

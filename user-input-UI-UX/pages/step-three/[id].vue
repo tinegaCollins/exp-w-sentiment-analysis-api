@@ -1,9 +1,11 @@
 <template>
 <div class="stepThree">
-    <h4>name of employee</h4>
-    <img src="../../assets/face-shot.png">
-    <input type="range" name="range" id="" v-model="rating" min="0" max="10">
-    <p>{{ rating}}</p>
+    <h4>{{ employeeDetails.name }}</h4>
+    <img  :src="employeeDetails.image" >
+    <div class="range">
+        <p>{{ rating}}</p>
+        <input type="range" name="range" id="" v-model="rating" min="0" max="10">
+    </div>
     <textarea placeholder="comments" v-model="empComments"></textarea>
     <div class="buttons">
         <NuxtLink to="/step-three"><button class="custom-btn">back</button></NuxtLink>
@@ -13,48 +15,27 @@
 </template>
 
 
-<script>
-import { useRangeStore } from '../../stores/main-store.js'
-export default {
-    setup(){
-         useHead({
-            link: {
-                rel: "icon",
-                href: "../../assets/like-thumb-up-svgrepo-com.svg"
-            }
-        })
-        const rating = ref(0);
-        const empComments = ref('');
-        const router = useRoute();
-        const employeeId = router.params.id;
-        console.log(employeeId);
-        const employeeDetails = ref({});
-        onMounted(() => {
-            fetch('http://localhost:8000/employees/' + employeeId)
-            .then(response => response.json())
-            .then(data => {
-                employeeDetails.value = data;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-        })
-        const store = useRangeStore()
-        const handleEmployee = function(){
-            store.$patch((state)=>{
-                state.employeeData.push({
-                    employeeID: employeeId.value,
-                    rating: rating.value,
-                    description: empComments.value
-                })
-            })
-            const router = useRouter()
-            router.push({ path: "/step-four" });
+<script setup>
+     useHead({
+        link: {
+            rel: "icon",
+            href: "../../assets/like-thumb-up-svgrepo-com.svg"
         }
-
-        return { rating, empComments, handleEmployee , employeeDetails}
-    }
-}
+    })
+    const rating = ref(0);
+    const empComments = ref('');
+    const employeeId = router.params.id;
+    const employeeDetails = ref({});
+    onMounted(() => {
+        fetch('http://localhost:8000/employee/' + employeeId)
+        .then(response => response.json())
+        .then(data => {
+            employeeDetails.value = data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    })
 
 </script>
 
@@ -65,17 +46,22 @@ export default {
     display: grid;
     place-items: center;
     font-family: var(--main-font);
-    row-gap: 20px;
+    row-gap: 15px;
 }
 .stepThree img{
     height: 200px;
-    width: auto;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #ccc;
 }
 .stepThree textarea {
-    height: 50px;
-    width: 200px;
+    height: 100px;
+    width: 300px;
     border: none;
     background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
 }
 .stepThree .buttons {
     width: 100%;

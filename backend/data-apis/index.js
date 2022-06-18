@@ -3,16 +3,17 @@ const express = require("express");
 const controller = require("./controllers/index.js");
 const cors = require("cors");
 
-
-
-
 mongoose.connect(
     "mongodb://localhost:27017/CEMS",
     { useNewUrlParser: true }
 ).then(()=>{
     const app = express();
     app.use(express.json());
-    app.use(cors());
+    app.use(
+        cors({
+            origin: "http://localhost:3000",
+            methods: ["GET", "POST", "PATCH"],
+        }));
     app.patch('/rating', controller.sendRatings);
     app.get('/rating/:id', controller.getRatings);
     app.patch('/review', controller.sendReviews);
@@ -20,6 +21,7 @@ mongoose.connect(
     app.patch('/recommendation', controller.sendRecommendations);
     app.get('/recommendation/:id', controller.getRecommendations);
     app.patch('/employee/:id', controller.sendEmployeeData);
+    app.get('/employee/:id', controller.getEmployeeData);
     app.get('/employees/:companyID', controller.getAllEmployees);
     app.post('/employee', controller.createNewEmployee);
     app.post('/company', controller.createCompany);
