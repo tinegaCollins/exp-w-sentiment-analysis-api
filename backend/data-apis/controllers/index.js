@@ -86,7 +86,7 @@ exports.sendRecommendations = async (req, res) => {
             {
             $push: {
                 recommendations: {
-                    recommendation: req.body.recommendations.recommendation,
+                    recommendation: req.body.recommendation,
                     created: Date.now()
                 }
             }

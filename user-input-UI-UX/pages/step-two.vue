@@ -44,8 +44,8 @@
 .stepTwo textarea {
     height: 150px;
     width: 300px;
-    border-radius: 5px;
-    background-color: var(--main-blue);
+    border-radius: 9px;
+    background-color: #f2f2f2;
     border: none;
     outline: none;
     appearance: none;
