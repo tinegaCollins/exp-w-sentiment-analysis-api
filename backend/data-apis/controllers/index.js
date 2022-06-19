@@ -3,8 +3,8 @@ const reviews = require("../models/reviews.js");
 const recommendations = require("../models/recommendations.js");
 const employees = require("../models/employees.js");
 const company = require("../models/company.js");
+const bcrypt = require("bcrypt");
 
-let text;
 exports.sendRatings = async (req, res) => {
     try{
         await ratings.updateOne(
@@ -176,32 +176,55 @@ exports.getAllEmployees = async (req, res) => {
 
 
 exports.createCompany = async (req, res) => {
-    const newCompany = new company(req.body);
-    await newCompany.save();
-    const companyId = await newCompany._id;
-    const newRating = {
-        companyID: companyId,
-        rating: []
+    try{
+        const salt = await bcrypt.genSalt();
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
+        const newCompany = new company({
+            name: req.body.name,
+            email: req.body.email,
+            password: hashPassword,
+            ratings: 0,
+            reviews: "",
+            recommendations: ""
+        });
+        await newCompany.save();
+        const companyId = await newCompany._id;
+        const newRating = {
+            companyID: companyId,
+            rating: []
+        }
+        await ratings.create(newRating);
+        const newreview = {
+            companyID: companyId,
+            reviews: []
+        }
+        await reviews.create(newreview);
+        const newrecommendation = {
+            companyID: companyId,
+            recommendations: []
+        }
+        await recommendations.create(newrecommendation);
+        res.send(newCompany._id);
     }
-    await ratings.create(newRating);
-    const newreview = {
-        companyID: companyId,
-        reviews: []
+    // 
+    catch(err){
+        console.log(err);
+        res.send(false);
     }
-    await reviews.create(newreview);
-    const newrecommendation = {
-        companyID: companyId,
-        recommendations: []
-    }
-    await recommendations.create(newrecommendation);
-    res.send(true);
+
 }
 
 exports.getCompanyData = async (req, res) => {
-    try{
-        const data = await company.find({})
+    const data = await company.findOne({ email: req.body.email });
+    if(data == null){
+        res.send(false);
     }
-    catch{
-        
+    else{
+        if( await bcrypt.compare(req.body.password, data.password )){
+            res.send(data);
+        }
+        else{
+            res.send(true);
+        }
     }
 }

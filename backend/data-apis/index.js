@@ -25,6 +25,7 @@ mongoose.connect(
     app.get('/employees/:companyID', controller.getAllEmployees);
     app.post('/employee', controller.createNewEmployee);
     app.post('/company', controller.createCompany);
+    app.post('/login', controller.getCompanyData);
     app.listen(8000, ()=>{
         console.log("server has started at port 8000");
     });
