@@ -12,7 +12,7 @@
         <main>
             <div class="preview background-blur">
                 <div class="chart">
-                    <h3>graphs</h3>
+                    <h3>{{ displayData.lastMonth }}</h3>
                 </div>
             </div>
             <div class="yesterday ">
@@ -25,19 +25,13 @@
                         <p>30 day </p>
                         <p>customer satisfactory rate</p>
                     </div>
-                    <p>70%</p>
+                    <p>{{ displayData.customerSatisfaction}}%</p>
                 </div>
             </div>
             <div class="live-today background-blur">
                 <h4>sample comments today</h4>
-                <div class="sample-examples">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, expedita.</p>
-                </div>
-                 <div class="sample-examples">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, expedita.</p>
-                </div>
-                 <div class="sample-examples">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, expedita.</p>
+                <div class="sample-examples" v-for="sample in displayData.sampleComments" :key="sample">
+                    <p>{{ sample }}</p>
                 </div>
             </div>
             <div class="top-employees background-blur">
@@ -72,39 +66,21 @@
 </template>
 
 
-<script>
+<script setup>
 
-export default {
-    data(){
-        return {
-            randomSamples: []
-        }
-    },
-    mounted(){
-        let colors = ['#F1BA31','#EF5629','#DC1456'];
-        let samples = [...document.querySelectorAll(".sample-examples")]
-        for (let i = 0; i < samples.length; i++) {
-            let colorPicked = this.randomInteger(0,3);
-            samples[i].style.color = colors[colorPicked];
-        };
-        let id = '62a80d31d6fb58434573ade4'
-        fetch('http://localhost:8000/random/' + id)
-        .then((data)=>{
-            this.randomSamples = data;
-            console.log(this.randomSamples);
-        })
-        fetch('http://localhost:8000/company/' + id)
-        .then((data)=>{
-            console.log(data);
-        })
-
-    },
-    methods: {
-        randomInteger(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-    }
-}
+const userID = '62aec29218f1b9776f69845c';
+const displayData = ref({});
+onMounted(()=>{
+    fetch(`http://localhost:8000/company/${userID}`)
+    .then(response => response.json())
+    .then(data => {
+        displayData.value = data;
+    })
+    .then(()=>{
+        
+    })
+    .catch(err => console.log(err));
+})
 </script>
 <style>
 .mid {

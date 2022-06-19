@@ -214,7 +214,7 @@ exports.createCompany = async (req, res) => {
 
 }
 
-exports.getCompanyData = async (req, res) => {
+exports.login = async (req, res) => {
     const data = await company.findOne({ email: req.body.email });
     if(data == null){
         res.send(false);
@@ -226,5 +226,16 @@ exports.getCompanyData = async (req, res) => {
         else{
             res.send(true);
         }
+    }
+}
+
+exports.getCompanyData = async (req, res) => {
+    try{
+        const data = await company.findById(req.params.id);
+        res.send(data);
+    }
+    catch(err){
+        console.log(err);
+        res.send(false);
     }
 }

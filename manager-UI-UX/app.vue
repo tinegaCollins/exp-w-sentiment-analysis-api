@@ -20,10 +20,10 @@
           <h3>thumbs up .</h3>
         </div>
         <div class="signup-details">
-          <p>{{ signupResponse }}</p>
+          <!-- <p>{{ signupResponse }}</p> -->
           <input type="text" placeholder="Email" v-model="email" @focus="focus">
-          <input type="password" placeholder="Password" v-model="password" @focus="focus">
-          <input type="password" placeholder="Confirm Password" v-model="confirmPassword" @focus="focus">
+          <input type="password" placeholder="Password" @focus="focus">
+          <input type="password" placeholder="Confirm Password"  @focus="focus">
           <button @click="signUp">sign up</button>
           <p class="signin">already have an account?</p>
         </div>
@@ -36,7 +36,8 @@
 
 
 <script setup>
-  const userID = '';
+  let userID;
+  // console.log(document.cookie);
   const closeModal = () => {
     const modal = document.getElementById('modal');
     modal.close();
@@ -44,7 +45,16 @@
   }
   onMounted(() => {
     let modal = document.getElementById('modal');
-    modal.showModal();
+    let placeHolder = document.cookie.split(',')[0];
+    userID = placeHolder.split('=')[1];
+    if (userID) {
+      modal.close();
+      modal.style.display = 'none'; 
+    }
+    else {
+      modal.showModal();
+    }
+    console.log(userID);
   })
   //sign in 
   const email = ref('');
@@ -64,7 +74,6 @@
       body: JSON.stringify(dataToSend)
     });
     const data = await response.json();
-    console.log(data);
       if(data == true){
         loginResponse.value = 'invalid password';
       }
@@ -72,8 +81,9 @@
         loginResponse.value = 'email not found';
       }
       else{
-        userID = data._id;
         loginResponse.value = 'login successful';
+
+        document.cookie = `userID=${data._id}, expires=Thu, 18 Dec 2023 12:00:00 UTC`;
         closeModal();
       }
   }
