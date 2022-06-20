@@ -239,3 +239,4 @@ exports.getCompanyData = async (req, res) => {
         res.send(false);
     }
 }
+

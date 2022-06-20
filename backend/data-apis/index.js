@@ -11,7 +11,7 @@ mongoose.connect(
     app.use(express.json());
     app.use(
         cors({
-            origin: "http://localhost:3000",
+            origin: "*",
             methods: ["GET", "POST", "PATCH"],
         }));
     app.patch('/rating', controller.sendRatings);
