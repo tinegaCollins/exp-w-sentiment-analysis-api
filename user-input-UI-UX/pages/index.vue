@@ -7,14 +7,6 @@
     </div>
 </template>
 
-<script>
-
-
-export default {
-}
-
-</script>
-
 <style>
 .wrapper {
     font-family: var(--main-font);

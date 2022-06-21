@@ -4,7 +4,7 @@ const controller = require("./controllers/index.js");
 const cors = require("cors");
 
 mongoose.connect(
-    "mongodb://localhost:27017/CEMS",
+    "mongodb+srv://CEMS_admin:pass@cems.5le7maf.mongodb.net/?retryWrites=true&w=majority",
     { useNewUrlParser: true }
 ).then(()=>{
     const app = express();

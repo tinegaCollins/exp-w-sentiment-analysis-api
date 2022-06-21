@@ -7,11 +7,11 @@ const companySchema = new mongoose.Schema({
     ratings: Number,
     reviews: String,
     recommendations: String,
-    topThree: [String],
+    topThreeEmployees: [String],
     lastMonth: [Number],
     customerSatisfaction: Number,
     sampleComments: [String],
-    sampleRecommendations: [String]
+    sampleRecommendations: [String],
 });
 
 module.exports = mongoose.model('Company', companySchema);

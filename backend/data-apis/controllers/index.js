@@ -61,7 +61,18 @@ exports.sendReviews = async (req, res) => {
             }
             }
         );
-        await res.send(true);
+        const allReviews = await reviews.findOne({ comapanyID: req.body.companyID });
+        const onlyReviews = allReviews.reviews;
+        const randomReviews = [];
+        //make this for loop work 
+        
+        for (let i = 0; i < 3; i++) {
+            let randomNumber = Math.floor((Math.random() * onlyReviews.length) + 1);
+            let removed = onlyReviews.splice(randomNumber,1);
+            randomNumber.push(removed);
+        }
+        console.log(randomReviews);
+        await res.send(onlyReviews);
     }
     catch(err){
         res.send(false);
@@ -132,6 +143,20 @@ exports.sendEmployeeData = async (req, res) => {
                 }
             }
         );
+        const emp = await employees.findById(req.params.id);
+        //filter the array of ojects to get the rating
+        const allRatings = emp.ratings.map(rate => rate.rating);
+        let average = allRatings.reduce((a, b) => a + b, 0)/allRatings.length;
+        average = Math.round(average);
+        await employees.updateOne(
+            { _id: req.params.id },
+            {
+                $set: {
+                    averageRating: average
+                }
+            }
+        );
+        
         await res.send(true);
     }
     catch(err){
@@ -191,7 +216,7 @@ exports.createCompany = async (req, res) => {
         const companyId = await newCompany._id;
         const newRating = {
             companyID: companyId,
-            rating: []
+            ratings: []
         }
         await ratings.create(newRating);
         const newreview = {
