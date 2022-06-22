@@ -1,10 +1,10 @@
 <template>
     <div class="single-employee-wrapper">
         <div class="about-single-employee">
-            <img src="../../assets/face-shot.png" alt="employee image">
-            <div class="inline-tex">
-                <h1>Jessica huang</h1>
-                <p>department of entertainment and enjoyment</p>
+            <img :src="employee.image" alt="employee image">
+            <div class="inline-text">
+                <h1>{{employee.name}}</h1>
+                <p>department of {{ employee.department}}</p>
             </div>
         </div>
         <div class="employee-stats">
@@ -26,12 +26,16 @@
 </template>
 
 
-<script>
-
-export default {
-    mounted(){
-        console.log("mounted")
-        let rating = 2.5;
+<script setup>
+const router = useRoute();
+const id = router.params.about;
+const employee = ref({});
+onMounted(()=>{
+    async function fetchEmployee(){
+        const response = await fetch(`http://localhost:8000/employee/${id}`);
+        const data = await response.json();
+        employee.value = data;
+        let rating = employee.value.averageRating/2;
         let stars = [...document.querySelectorAll(".star")];
 
         if (rating % 1 != 0){
@@ -45,15 +49,32 @@ export default {
                 stars[i].classList.add('stars-earned')
             }
         }
- 
     }
-}
+    fetchEmployee();
+    
+})
+//unmount event
+onUnmounted(()=>{
+    let stars = [...document.querySelectorAll(".star")];
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove('stars-earned')
+    }
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove('half-star')
+    }
+})
 </script>
 
 <style>
 
 .single-employee-wrapper {
     padding: 30px;
+}
+.about-single-employee img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 .about-single-employee {
     display: flex;

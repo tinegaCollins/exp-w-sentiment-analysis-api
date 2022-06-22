@@ -168,9 +168,9 @@ exports.sendEmployeeData = async (req, res) => {
         );
         const employees2 = await employees.find({ companyID: req.body.companyID });
         //sort array of objects by average rating
-        const sortedEmployees = await employees2.sort((a, b) => b.averageRating - a.averageRating);
+        const sortedEmployees = employees2.sort((a, b) => b.averageRating - a.averageRating);
         //get the top 3 employees
-        const topEmployees = await sortedEmployees.slice(0, 3);
+        const topEmployees = sortedEmployees.slice(0, 3);
         const topEmployeesIds = topEmployees.map(emp => emp._id);
         await company.updateOne(
             { _id: req.body.companyID },
