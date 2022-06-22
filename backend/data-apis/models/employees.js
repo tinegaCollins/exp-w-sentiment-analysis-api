@@ -24,7 +24,6 @@ const employeeSchema = new mongoose.Schema({
         }
     ],
     averageRating: Number,
-    averageReview: String,
 });
 
 module.exports = mongoose.model('Employee', employeeSchema);

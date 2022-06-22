@@ -130,6 +130,7 @@ dialog{
   width: 400px;
   display: grid;
   place-items: center;
+  z-index: 100;
 }
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.7);
