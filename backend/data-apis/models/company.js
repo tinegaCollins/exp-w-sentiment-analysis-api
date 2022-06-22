@@ -12,6 +12,7 @@ const companySchema = new mongoose.Schema({
     customerSatisfaction: Number,
     sampleComments: [String],
     sampleRecommendations: [String],
+    satisfactoryRatings: Number
 });
 
 module.exports = mongoose.model('Company', companySchema);

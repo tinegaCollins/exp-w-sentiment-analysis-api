@@ -25,7 +25,7 @@
             body: JSON.stringify(dataToSend)
         })
         const data = await response.json()
-              if (data == true) {
+        if (data == true) {
             const router = useRouter()
             router.push('/thanks')
         }

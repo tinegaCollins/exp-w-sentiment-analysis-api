@@ -25,13 +25,13 @@
                         <p>30 day </p>
                         <p>customer satisfactory rate</p>
                     </div>
-                    <p>{{ displayData.customerSatisfaction}}%</p>
+                    <p>{{ displayData.satisfactoryRatings}}%</p>
                 </div>
             </div>
             <div class="live-today background-blur">
                 <h4>sample comments today</h4>
-                <div class="sample-examples" v-for="sample in displayData.sampleComments" :key="sample">
-                    <p>{{ sample }}</p>
+                <div class="sample-examples" v-for="sample in reviews" :key="sample">
+                    <p>{{ sample.review }}</p>
                 </div>
             </div>
             <div class="top-employees background-blur">
@@ -68,16 +68,24 @@
 
 <script setup>
 
-const userID = '62aec29218f1b9776f69845c';
+const userID = '62b1e8d5b3b9f806d6a76189';
 const displayData = ref({});
+const reviews = ref();
 onMounted(()=>{
+    fetch(`http://localhost:8000/getRandomReviews/${userID}`)
+    .then(response => response.json())
+    .then(data => {
+        reviews.value = data;
+        console.log(reviews.value);
+    })
+    .catch(err => console.log(err));
+
+    //get other data
     fetch(`http://localhost:8000/company/${userID}`)
     .then(response => response.json())
     .then(data => {
         displayData.value = data;
-    })
-    .then(()=>{
-        
+        console.log(displayData.value);
     })
     .catch(err => console.log(err));
 })

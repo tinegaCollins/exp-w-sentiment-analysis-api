@@ -8,7 +8,7 @@
 
 <script setup>
     const review = ref('');
-    const id = '62ac98e13b8ffe9804c25005'
+    const id = '62b1e8d5b3b9f806d6a76189';
     async function handleReview() {
         const datatosend = {
             companyID : id,
@@ -54,6 +54,7 @@
     position: relative;
     line-height: 1.5;
     color: var(--main-color);
+    color: #333;
     padding: 10px;
 }
 </style>

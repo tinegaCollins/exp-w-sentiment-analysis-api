@@ -17,8 +17,54 @@
 </template>
 
 
-<script setup>
-// router controlled events
+<script>
+export default {
+  data() {
+    return {
+      show: true,
+      path: '',
+    };
+  },
+  watch: {
+    $route(to, from) {
+      this.path = to.path;
+      console.log(this.path);
+      switch (this.path) {
+        case '/':
+          this.show = true;
+          break;
+        case '/step-one':
+          this.getColourBox(1);
+          break;
+        case '/step-two':
+          this.getColourBox(2);
+          break;
+        case '/step-three':
+          this.getColourBox(3);
+          break;
+        case '/step-four':
+          this.getColourBox(4);
+          break;
+        case '/step-five':
+          tthis.getColourBox(5);
+          break;
+        default:
+          this.show = false;
+          break;
+      }
+    }
+  },
+  methods: {
+    getColourBox(loops){
+      let boxes = [...document.querySelectorAll('.step-one, .step-two, .step-three, .step-four, .step-five')];
+      for (let i = 0; i < loops; i++) {
+        boxes[i].classList.add('active');
+      }
+    }
+  }
+};
+
+
 
 
 </script>
@@ -55,11 +101,13 @@
 .progress-bar div {
   height: 20px;
   width: 20px;
-  background-color: var(--main-pink);
   border-radius: 50%;
   border: 1px solid wheat;
 }
 .step-four, .step-five {
   background: transparent !important;
+}
+.active {
+  background: var(--main-pink);
 }
 </style>

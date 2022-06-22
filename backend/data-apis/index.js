@@ -24,6 +24,8 @@ mongoose.connect(
     app.get('/employee/:id', controller.getEmployeeData);
     app.get('/employees/:companyID', controller.getAllEmployees);
     app.post('/employee', controller.createNewEmployee);
+    app.get('/getRandomReviews/:id', controller.getRandomReviews);
+    app.get('/getRandomRecommendations/:id', controller.getRandomRecommendations);
     app.post('/company', controller.createCompany);
     app.post('/login', controller.login);
     app.get('/company/:id', controller.getCompanyData);

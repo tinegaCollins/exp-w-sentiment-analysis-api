@@ -61,18 +61,7 @@ exports.sendReviews = async (req, res) => {
             }
             }
         );
-        const allReviews = await reviews.findOne({ comapanyID: req.body.companyID });
-        const onlyReviews = allReviews.reviews;
-        const randomReviews = [];
-        //make this for loop work 
-        
-        for (let i = 0; i < 3; i++) {
-            let randomNumber = Math.floor((Math.random() * onlyReviews.length) + 1);
-            let removed = onlyReviews.splice(randomNumber,1);
-            randomNumber.push(removed);
-        }
-        console.log(randomReviews);
-        await res.send(onlyReviews);
+        await res.send(true);
     }
     catch(err){
         res.send(false);
@@ -89,6 +78,18 @@ exports.getReviews = async (req, res) => {
         console.log(err);
     }
 }
+exports.getRandomReviews = async (req, res) => {
+    try{
+        const data = await reviews.findOne({ companyID: req.params.id });
+        const randomReviews = data.reviews.sort(() => Math.random() - 0.5).slice(0, 3); 
+        res.send(randomReviews);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+
 
 exports.sendRecommendations = async (req, res) => {
     try{
@@ -120,7 +121,16 @@ exports.getRecommendations = async (req, res) => {
         console.log(err);
     }
 }
-
+exports.getRandomRecommendations = async (req, res) => {
+    try{
+        const data = await recommendations.findOne({ companyID: req.params.id });
+        const randomRecommendations = data.recommendations.sort(() => Math.random() - 0.5).slice(0, 3);
+        res.send(randomRecommendations);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
 exports.sendEmployeeData = async (req, res) => {
     try{
         await employees.updateOne(
