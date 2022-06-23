@@ -88,7 +88,7 @@ onMounted(()=>{
 }
 @keyframes spinner {
     0% { transform: rotate(0deg); }
-  100% { transform: rotate(90deg); }
+  100% { transform: rotate(180deg); }
 }
 #add-link svg {
     fill: var(--main-yellow);

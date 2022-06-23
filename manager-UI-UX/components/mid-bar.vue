@@ -36,7 +36,7 @@
             </div>
             <div class="top-employees background-blur">
                 <h5>top employees</h5>
-                <div class="blur-background" v-for="employee in topEmployees">
+                <div class="blur-background" v-for="employee in topEmployees" :key="employee.averageRating">
                     <img :src="employee.image" >
                     <div class="details">
                         <h4>{{ employee.name }}</h4>

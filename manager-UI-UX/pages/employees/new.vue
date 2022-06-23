@@ -6,8 +6,8 @@
             <input type="text" placeholder="name" id="name">
             <label for="department">department:</label>
             <input type="text" placeholder="enter a department" id="department">
-            <label for="image">image</label>
-            <input type="image" src="" alt="oiim" id="image">
+            <label for="img">image</label>
+            <input type="file" id="img" name="img" accept="image/*">
             <button>send</button>
         </div>
             <input type="image" src="" alt="">
@@ -24,6 +24,10 @@
 
 .new-wrapper {
     padding: 30px ;
+}
+.new-wrapper .data-to-send {
+    display: flex;
+    flex-direction: column;
 }
 
 </style>

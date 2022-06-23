@@ -4,6 +4,12 @@ const recommendations = require("../models/recommendations.js");
 const employees = require("../models/employees.js");
 const company = require("../models/company.js");
 const bcrypt = require("bcrypt");
+const path = require('path');
+const crypto = require('crypto');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+
 
 exports.sendRatings = async (req, res) => {
     try{

@@ -2,13 +2,18 @@ const mongoose = require("mongoose");
 const express = require("express");
 const controller = require("./controllers/index.js");
 const cors = require("cors");
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const GridFsStream= require('gridfs-stream');
+
 
 mongoose.connect(
     "mongodb://localhost:27017/CEMS",
     { useNewUrlParser: true }
 ).then(()=>{
     const app = express();
-    app.use(express.json());
+    app.use(bodyParser.json());
+    app.use(methodOverride('_method'));
     app.use(
         cors({
             origin: "*",

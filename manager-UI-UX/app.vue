@@ -1,6 +1,6 @@
 <template>
     <div class="home" >
-      <dialog id="modal" @keydown.esc.prevent @keydown.enter = "sign">
+      <dialog id="modal" @keydown.esc.prevent @keydown.enter = "sign" v-if="modal">
         <div class="dialog-logo">
           <img src="./assets/like-thumb-up-svgrepo-com.svg" alt="company logo">
           <h3>thumbs up .</h3>
@@ -11,21 +11,11 @@
           <input type="password" placeholder="Password" v-model="password" @focus="focus">
           <button @click="sign">login</button>
           <a href="#">forgot your password</a>
-          <p class="signup" @click="signUp">sign up for a new account</p>
-        </div>
-      </dialog>
-      <dialog id="modal2" @keydown.esc.prevent>
-        <div class="dialog-logo">
-          <img src="./assets/like-thumb-up-svgrepo-com.svg" alt="company logo">
-          <h3>thumbs up .</h3>
-        </div>
-        <div class="signup-details">
-          <!-- <p>{{ signupResponse }}</p> -->
-          <input type="text" placeholder="Email" v-model="email" @focus="focus">
-          <input type="password" placeholder="Password" @focus="focus">
-          <input type="password" placeholder="Confirm Password"  @focus="focus">
-          <button @click="signUp">sign up</button>
-          <p class="signin">already have an account?</p>
+          <div class="keep-logs">
+            <input type="checkbox" id="keep-logs" v-model="keepLogs">
+            <label for="keep-logs">keep me logged in</label>
+          </div>
+          <p class="signup">sign up for a new account</p>
         </div>
       </dialog>
       <side-bar/>
@@ -36,30 +26,32 @@
 
 
 <script setup>
-  let userID;
-  // console.log(document.cookie);
-  const closeModal = () => {
-    const modal = document.getElementById('modal');
-    modal.close();
-    modal.style.display = 'none'; 
-  }
+  let userID = ref(null);
+
+  let modal = ref(false);
   onMounted(() => {
-    let modal = document.getElementById('modal');
-    let placeHolder = document.cookie.split(',')[0];
-    userID = placeHolder.split('=')[1];
-    if (userID) {
-      modal.close();
-      modal.style.display = 'none'; 
+    if(localStorage.getItem('userID')){
+      userID.value = localStorage.getItem('userID');
+    }else if(sessionStorage.getItem('userID')){
+      userID.value = sessionStorage.getItem('userID');
+    }
+    else{
+      userID.value = null;
+    }
+    if (userID.value) {
+      modal.value = false;
     }
     else {
-      modal.showModal();
+      modal.value = true;
     }
-    console.log(userID);
   })
   //sign in 
   const email = ref('');
   const password = ref('');
-
+  const keepLogs = ref(false);
+  function closeModal() {
+    modal.value = false;
+  }
   const sign = async () => {
     const dataToSend = {
       email: email.value,
@@ -82,38 +74,19 @@
       }
       else{
         loginResponse.value = 'login successful';
-
-        document.cookie = `userID=${data._id}, expires=Thu, 18 Dec 2023 12:00:00 UTC`;
+        console.log(keepLogs.value);
+        if (keepLogs.value == true) {
+          localStorage.setItem('userID', data._id);
+        }
+        else {
+          sessionStorage.setItem('userID', data._id);
+        }
         closeModal();
       }
   }
   const loginResponse = ref('');
   const focus = () => {
     loginResponse.value = '';
-  }
-  //sign up
-  const signUp = () => {
-    const modal = document.getElementById('modal');
-    modal.animate([
-      { transform: 'translateX(0)', opacity: 1 },
-      { transform: 'translateX(-200%)', opacity: .2 }
-    ], {
-      duration: 200,
-      fill: 'forwards'
-    });
-    setTimeout(() => {
-      closeModal();
-    }, 300);
-    const modal2 = document.getElementById('modal2');
-    modal2.style.display = 'block';
-    modal2.showModal();
-    modal2.animate([
-      { transform: 'translateX(200%)', opacity: .2 },
-      { transform: 'translateX(0)', opacity: 1 }
-    ], {
-      duration: 200,
-      fill: 'forwards'
-    });
   }
 </script>
 
@@ -144,7 +117,7 @@ dialog .dialog-logo{
   flex-direction: column;
   align-items: center;
 }
-dialog .login-details, .signup-details{
+dialog .login-details{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,16 +155,19 @@ dialog .login-details p:nth-child(1){
   color: var(--main-yellow);
   font-size: 1rem;
 }
-dialog .login-details .signup{
+
+.keep-logs{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-top: 20px;
-  padding: 10px;
-  border-radius: 30px;
+  justify-content: center;
 }
-dialog .login-details .signup:hover{
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-#modal2{
-  display: none;
+.keep-logs input{
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  border: 1px solid #ccc !important;
+  margin-right: 10px !important;
 }
 </style>
