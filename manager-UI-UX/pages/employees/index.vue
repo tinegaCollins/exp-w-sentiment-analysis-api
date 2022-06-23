@@ -16,6 +16,10 @@
                 </div>
             </div>
         </div>
+            <NuxtLink to='/employees/new' id="add-link">
+                <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/></svg>
+                new</button>
+            </NuxtLink>
     </div>
 </template>
 
@@ -64,5 +68,29 @@ onMounted(()=>{
     width: 100px;
     object-fit: cover;
     border-radius: 50%;
+}
+#add-link button {
+    background: transparent;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+#add-link button:hover {
+    cursor: pointer;
+}
+#add-link button:hover svg{
+    animation: spinner 200ms linear 1;
+}
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(90deg); }
+}
+#add-link svg {
+    fill: var(--main-yellow);
 }
 </style>
