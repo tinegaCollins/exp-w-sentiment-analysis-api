@@ -1,22 +1,21 @@
-import presetIcons from '@unocss/preset-icons'
-
 export default defineNuxtConfig({
     css: ['~/assets/css/tailwind.css'],
-    buildModules: ['@nuxtjs/tailwindcss', '@unocss/nuxt', '@nuxtjs/color-mode'],
+    modules: ['@nuxtjs/tailwindcss', '@unocss/nuxt', '@nuxtjs/color-mode', '@pinia/nuxt'],
     colorMode: {
         classSuffix: '',
     },
     app: {
         head: {
             charset: 'utf-16',
-            viewport: 'width=500, initial-scale=1',
-            title: 'Print-Depot',
-            meta: [{ name: 'description', content: 'Print Depot site' }],
+            title: 'grahan v1',
+            meta: [
+                { name: 'description', content: 'Agency v1' },
+            ],
+            link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet' }],
         },
         pageTransition: { name: 'page', mode: 'out-in' },
     },
-    unocss: {
-        icons: true,
-        presets: [presetIcons({})],
+    nitro: {
+        plugins: ['~/server/index.ts'],
     },
 })

@@ -2,12 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-	.card-tate {
-		background: rgba(255, 255, 255, 0.05);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-	}
-	.tate-color {
-		background: linear-gradient(to bottom, #e74142, #e84041);
-	}
+:root {
+    --brown: #d79922;
+    --kinda-pink: #efe1ba;
+    --red: #f13c1f;
+    --dark-blue: #4056a1;
+    --light-blue: #c5cbe3;
 }
+@layer components {
+    .card-tate {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .tate-color {
+        background: linear-gradient(to bottom, #e74142, #e84041);
+    }
+}
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    @apply text-[#0E0B3D] bg-gray-50;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-blue-100;
+}
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
