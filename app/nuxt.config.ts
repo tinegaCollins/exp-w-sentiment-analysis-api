@@ -7,11 +7,11 @@ export default defineNuxtConfig({
     app: {
         head: {
             charset: 'utf-16',
-            title: 'grahan v1',
+            title: 'Review Central',
             meta: [
-                { name: 'description', content: 'Agency v1' },
+                { name: 'description', content: 'Review Central' },
             ],
-            link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet' }],
+            link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet' },{ rel: 'icon', type: 'image/x-icon', href: '/logo-small.png' }],
         },
         pageTransition: { name: 'page', mode: 'out-in' },
     },

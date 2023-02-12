@@ -39,3 +39,39 @@ body {
     background: #fff;
 }
 
+
+.toast_parent {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast {
+    z-index: 999;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    animation: showToast 0.3s ease-in-out;
+}
+@keyframes showToast {
+    0% {
+        opacity: 0;
+        transform: translateY(30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.success {
+    color: #333;
+    background-color: var(--light-blue);
+}
+.error {
+    color: #fff;
+    background-color: var(--red);
+}

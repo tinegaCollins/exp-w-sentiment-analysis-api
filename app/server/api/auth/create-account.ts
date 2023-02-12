@@ -10,9 +10,9 @@ export default defineEventHandler(async (event) => {
                 name,
             }),
             savedCompany = await newCompany.save();
-        console.log(savedCompany);
         return {
             status: 200,
+            body: savedCompany._id,
         };
     } catch (err) {
         console.log(err);
