@@ -37,11 +37,13 @@
         "@pinia/nuxt": "^0.4.6",
         "@vueuse/core": "^9.6.0",
         "bcrypt": "^5.0.1",
+        "chart.js": "^4.2.1",
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
         "jsonwebtoken": "^8.5.1",
         "jwt-decode": "^3.1.2",
         "mongoose": "^6.8.0",
-        "pinia": "^2.0.28"
+        "pinia": "^2.0.28",
+        "vue-chartjs": "^5.2.0"
     }
 }

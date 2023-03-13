@@ -14,6 +14,22 @@ const companySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    totalReviews: {
+        type: Number,
+        required: false,
+    },
+    last6HoursReviews: {
+        type: Number,
+        required: false,
+    },
+    happyClients: {
+        type: Number,
+        required: false,
+    },
+    unSatisfiedClients: {
+        type: Number,
+        required: false,
+    },
 });
 
 export default mongoose.model<Company>("Company", companySchema);

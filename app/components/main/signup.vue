@@ -186,6 +186,7 @@ let company = ref<Company>({
     email: '',
     password: '',
 });
+let router = useRouter();
 
 async function signIn() {
     console.log(company.value);
@@ -202,7 +203,15 @@ async function signUp() {
             method: 'POST',
             body: JSON.stringify(company.value),
         }).then((res) => {
-            console.log(res);
+            let id = res.body;
+            if (id) {
+                useToast('Account created successfully', 'success')
+                setTimeout(() => {
+                    emits('login')
+                }, 2000);
+            } else {
+                useToast('Account already exists', 'error')
+            }
         });
     }
 }

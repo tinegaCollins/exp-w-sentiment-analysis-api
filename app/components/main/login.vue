@@ -10,6 +10,7 @@ let SignUp = () => {
     emits('signUp')
 }
 
+let router = useRouter()
 let login = async () => {
     if (company.value.email == '' || company.value.password == '') {
         useToast('please fill all fields', 'error')
@@ -20,10 +21,18 @@ let login = async () => {
         body: JSON.stringify(company.value),
     })
         .then((res: any) => {
-            console.log(res)
             if (res.status == 200) {
                 useToast('login successfully', 'success')
-            } else {
+                let id = res.body
+                setTimeout(() => {
+                    router.push(`/dashboard-${id}`)
+                }, 1000)
+            }else if (res.status == 400) {
+                useToast('Account not found', 'error')
+            }else if(res.status == 401){
+                useToast('Wrong password', 'error')
+            }
+            else {
                 useToast('login failed', 'error')
             }
         })
