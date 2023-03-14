@@ -44,4 +44,7 @@ def analyze_sentiment(text):
     else:
         sent = 'very positive'
 
-  
+    prob = result[0]['score']
+
+    # Format and return results
+    return {'sentiment': sent, 'probability': prob}
