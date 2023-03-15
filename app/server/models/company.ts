@@ -17,18 +17,22 @@ const companySchema = new mongoose.Schema({
     totalReviews: {
         type: Number,
         required: false,
+        default: 0,
     },
     last6HoursReviews: {
         type: Number,
         required: false,
+        default: 0,
     },
     happyClients: {
         type: Number,
         required: false,
+        default: 0,
     },
     unSatisfiedClients: {
         type: Number,
         required: false,
+        default: 0,
     },
 });
 

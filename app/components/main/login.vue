@@ -42,10 +42,10 @@ let login = async () => {
 }
 </script>
 <template>
-    <section class="bg-white">
+    <section class="bg-white h-screen">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div
-                class="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
+                class="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center h-screen lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
                 <div class="absolute inset-0">
                     <img class="object-cover object-top w-full h-full"
                         src="https://www.callcentrehelper.com/images/stories/2021/10/satisfied-customer-240406392-760.jpg"
