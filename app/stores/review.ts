@@ -44,7 +44,7 @@ export const useReviewStore = defineStore({
                     likelyToRecommend: this.likelyToRecommend,
                     companyId,
                 }),
-            }).then((res) => {
+            }).then((res:any) => {
                 if (res.status === 200) {
                     useToast('review submitted successfully', 'success')
                 } else {

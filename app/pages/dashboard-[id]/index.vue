@@ -1,9 +1,31 @@
+<script setup lang="ts">
+let router = useRoute();
+console.log(router.params.id);
+interface Company {
+    name: string;
+    id: string;
+    totalReviews: number;
+    last6Hours: number;
+    satisfied: number;
+    unsatisfied: number;
+    neutral: number;
+}
+let company = ref<Company>();
+let getOverllDetails = async () => {
+    let response = await $fetch(
+        `/api/company/get-overall-details/${router.params.id}`
+    );
+    company.value = response.body as Company;
+};
+getOverllDetails();
+</script>
 <template>
     <div class="bg-[#F2F6FE] h-screen flex gap-3">
         <DashboardSideBar />
         <div class="w-full h-full border-black p-5 pt-5">
-            <DashboardNavBar />
-            <DashboardSummary />
+            <DashboardNavBar :name="company?.name"/>
+            <DashboardSummary :last6-hours="company?.last6Hours" :total-reviews="company?.totalReviews" :satisfied="company?.satisfied" :unsatisfied="company?.unsatisfied" :neutral="company?.neutral"
+             />
             <div class="flex gap-10 mt-3">
                 <div class="w-4/6 bg-green-400 grid place-items-center shadow-lg">
                     <DashboardLineChart class="h-max w-full" />

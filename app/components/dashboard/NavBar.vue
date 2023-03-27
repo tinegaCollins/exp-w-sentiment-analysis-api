@@ -7,8 +7,17 @@
                 <h1 class="flex items-center">Welcome Back
                     <img src="https://em-content.zobj.net/thumbs/120/apple/325/waving-hand_1f44b.png" alt="wave" class="h-5 ml-2">
                 </h1>
-                <h2 class="text-xs">Hr, Admin</h2>
+                <h2 class="text-xs">{{  name }}, Admin</h2>
             </div>
         </div>
     </nav>
 </template>
+
+<script setup>
+defineProps({
+    name: {
+        type: String,
+        required: true
+    }
+})
+</script>
