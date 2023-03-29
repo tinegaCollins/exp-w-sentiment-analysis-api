@@ -1,5 +1,5 @@
 <template>
-    <nav class="">
+    <nav class="flex items-center">
         <div class="flex">
             <img src="../../assets/images/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail-removebg-preview.png"
                 class="h-14">
@@ -10,10 +10,15 @@
                 <h2 class="text-xs">{{  name }}, Admin</h2>
             </div>
         </div>
+        <div class="ml-auto">
+            <Icon icon="ph:bell-simple-duotone" class="text-3xl" />
+        </div>
     </nav>
 </template>
 
 <script setup>
+import { Icon } from '@iconify/vue';
+
 defineProps({
     name: {
         type: String,

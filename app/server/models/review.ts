@@ -9,6 +9,10 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    overallExperienceSentiment: {
+        type: String,
+        required: false,
+    },
     easeOfUse: {
         type: Number,
         required: true,
@@ -21,6 +25,10 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    seggestionsSentiment: {
+        type: String,
+        required: false,
+    },
     likelyToRecommend: {
         type: Number,
         required: true,
@@ -28,6 +36,11 @@ const reviewSchema = new mongoose.Schema({
     companyId: {
         type: String,
         required: true,
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now,
     },
 })
 

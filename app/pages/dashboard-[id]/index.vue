@@ -23,9 +23,10 @@ getOverllDetails();
     <div class="bg-[#F2F6FE] h-screen flex gap-3">
         <DashboardSideBar />
         <div class="w-full h-full border-black p-5 pt-5">
-            <DashboardNavBar :name="company?.name"/>
-            <DashboardSummary :last6-hours="company?.last6Hours" :total-reviews="company?.totalReviews" :satisfied="company?.satisfied" :unsatisfied="company?.unsatisfied" :neutral="company?.neutral"
-             />
+            <DashboardNavBar :name="company?.name" />
+            <DashboardSummary :last6-hours="company?.last6Hours" :total-reviews="company?.totalReviews"
+                :satisfied="company?.satisfied" :unsatisfied="company?.unsatisfied" :neutral="company?.neutral" />
+            <DashboardSampleRev />
             <div class="flex gap-10 mt-3">
                 <div class="w-4/6 bg-green-400 grid place-items-center shadow-lg">
                     <DashboardLineChart class="h-max w-full" />
