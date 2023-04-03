@@ -21,8 +21,8 @@ getOverllDetails();
 </script>
 <template>
     <div class="bg-[#F2F6FE] h-screen flex gap-3">
-        <DashboardSideBar />
-        <div class="w-full h-full border-black p-5 pt-5">
+        <DashboardSideBar class="fixed top-0 left-0" />
+        <div class="w-[calc(100vw-250px)] relative left-[250px] h-full border-black p-5 pt-5">
             <DashboardNavBar :name="company?.name" />
             <DashboardSummary :last6-hours="company?.last6Hours" :total-reviews="company?.totalReviews"
                 :satisfied="company?.satisfied" :unsatisfied="company?.unsatisfied" :neutral="company?.neutral" />

@@ -10,7 +10,7 @@ const reviewSchema = new mongoose.Schema({
         required: false,
     },
     overallExperienceSentiment: {
-        type: String,
+        type: Number,
         required: false,
     },
     easeOfUse: {
@@ -26,7 +26,7 @@ const reviewSchema = new mongoose.Schema({
         required: false,
     },
     seggestionsSentiment: {
-        type: String,
+        type: Number,
         required: false,
     },
     likelyToRecommend: {

@@ -27,8 +27,8 @@ export default eventHandler(async (event) => {
     })
     let happy = await review.find({
         companyId: id,
-        overallRating: {
-            $gte: 4,
+        overallExperienceSentiment: {
+            $eq: 1,
         },
         createdAt: {
             $gte: new Date(Date.now() - 8 * 60 * 60 * 1000),
@@ -36,8 +36,8 @@ export default eventHandler(async (event) => {
     })
     let unhappy = await review.find({
         companyId: id,
-        overallRating: {
-            $lte: 2,
+        overallExperienceSentiment: {
+            $eq: -1,
         },
         createdAt: {
             $gte: new Date(Date.now() - 8 * 60 * 60 * 1000),
@@ -45,8 +45,8 @@ export default eventHandler(async (event) => {
     })
     let neutral = await review.find({
         companyId: id,
-        overallRating: {
-            $eq: 3
+        overallExperienceSentiment: {
+            $eq: 0
         },
         createdAt: {
             $gte: new Date(Date.now() - 8 * 60 * 60 * 1000),
