@@ -28,7 +28,7 @@ getOverllDetails();
                 :satisfied="company?.satisfied" :unsatisfied="company?.unsatisfied" :neutral="company?.neutral" />
             <DashboardSampleRev />
             <div class="flex gap-10 mt-3">
-                <div class="w-4/6 bg-green-400 grid place-items-center shadow-lg">
+                <div class="w-4/6 border border-black/40 p-3 rounded-lg grid place-items-center shadow-lg">
                     <DashboardLineChart class="h-max w-full" />
                 </div>
                 <div class="w-2/6">
