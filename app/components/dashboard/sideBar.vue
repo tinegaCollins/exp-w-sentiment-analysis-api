@@ -15,7 +15,7 @@ function copyLink() {
     <div class="bg max-w-[250px] h-full rounded-r-3 flex flex-col items-center pt-7 overflow-hidden">
         <img src="/logo-flat.png" alt="Logo" class="h-14" />
         <div class="w-full flex flex-col mt-10 px-4 gap-3">
-            <NuxtLink to="/" class="bg-[#f5f5f5] flex items-center pl-15 gap-3 h-12 rounded-lg">
+            <NuxtLink :to="`/dashboard-${$route.params.id}`" class="bg-[#f5f5f5] flex items-center pl-15 gap-3 h-12 rounded-lg active:bg-red-500">
                 <Icon icon="material-symbols:overview-key-outline" class="" />
                 <span class="text-sm">Overview</span>
             </NuxtLink>
@@ -41,4 +41,5 @@ function copyLink() {
     background-color: #8BC6EC;
     background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
 }
+
 </style>

@@ -35,6 +35,11 @@ getOverllDetails();
                     <DashboardPieChart />
                 </div>
             </div>
+            <div class="flex mt-9 items-center justify-around">
+                <LazyDashboardEase />
+                <LazyDashboardRecomend />
+            </div>
         </div>
+        
     </div>
 </template>

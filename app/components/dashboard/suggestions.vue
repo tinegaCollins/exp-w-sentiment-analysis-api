@@ -1,6 +1,6 @@
 <template>
     <div class="px-2">
-        <h2 class="text-semibold text-black/75">What people say about your product</h2>
+        <h2 class="text-semibold text-black">Changes Suggested</h2>
         <div >
             <Sample v-for="review in reviews" :review="review.suggestion" :date="review.createdAt"  />
         </div>
